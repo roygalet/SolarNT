@@ -18,4 +18,6 @@
         android:layout_marginTop="129dp"
         android:src="@drawable/logo256xwide"
         android:contentDescription="@string/solarnt_logo_on_home_screen" />
+
+
 </RelativeLayout>
