@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SolarNT</string>
+    <string name="solarnt_logo_on_home_screen">SolarNT Logo on Home Screen</string>
 </resources>
