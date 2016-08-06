@@ -2,4 +2,7 @@
     <string name="app_name">SolarNT</string>
     <string name="solarnt_logo_on_home_screen">SolarNT Logo on Home Screen</string>
     <string name="yes_monitor">PV Monitor</string>
+    <string name="power_monitor">Power Monitor</string>
+    <string name="title_activity_yes">YesActivity</string>
+    <string name="title_activity_dust_analyzer">Dust Analyzer</string>
 </resources>
