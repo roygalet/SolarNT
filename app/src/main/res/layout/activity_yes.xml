@@ -24,7 +24,7 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="144dp"
         android:layout_below="@+id/yesImgLogo"
         android:layout_centerHorizontal="true">
 
@@ -44,9 +44,9 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:id="@+id/yesImgMonitor"
-                    android:src="@drawable/solarroof"
+                    android:src="@drawable/monitor"
                     android:layout_margin="8dp" />
 
                 <TextView
@@ -85,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/yesImgDustAnalyzer"
-                    android:src="@drawable/redroof"
+                    android:src="@drawable/dustanalyzer"
                     android:layout_margin="8dp" />
                 <TextView
                     android:layout_width="wrap_content"
