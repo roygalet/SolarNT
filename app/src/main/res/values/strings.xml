@@ -5,4 +5,5 @@
     <string name="power_monitor">Power Monitor</string>
     <string name="title_activity_yes">YesActivity</string>
     <string name="title_activity_dust_analyzer">Dust Analyzer</string>
+    <string name="no_image_selected">No Image Selected.\n Choose from Camera or Gallery</string>
 </resources>

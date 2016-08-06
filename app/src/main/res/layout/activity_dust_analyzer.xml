@@ -18,8 +18,53 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
-
     </android.support.design.widget.AppBarLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="512dp"
+            android:id="@+id/dustImgImage"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="66dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/textView"
+            android:layout_alignTop="@+id/dustImgImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="205dp"
+            android:textAlignment="center"
+            android:text="@string/no_image_selected" />
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/dustButtonCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_camera"
+        app:layout_anchor="@id/dustImgImage"
+        app:layout_anchorGravity="bottom|left|end"
+        android:baselineAlignBottom="false"
+        app:backgroundTint="@android:color/holo_blue_dark" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/dustButtonGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="80dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_gallery"
+        app:layout_anchor="@id/dustImgImage"
+        app:layout_anchorGravity="bottom|left|end"
+        android:baselineAlignBottom="false"
+        app:backgroundTint="@android:color/holo_red_light" />
 
 </android.support.design.widget.CoordinatorLayout>
