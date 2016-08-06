@@ -7,25 +7,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.roygalet.www.solarnt.MainActivity"
+    tools:context="com.roygalet.www.solarnt.YesActivity"
     android:background="@drawable/background">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/mainImgLogo"
+        android:id="@+id/yesImgLogo"
         android:src="@drawable/logo256xwide"
         android:contentDescription="@string/solarnt_logo_on_home_screen"
-        android:layout_marginTop="28dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:layout_below="@+id/mainTextQuestion"
+        android:layout_below="@+id/yesImgLogo"
         android:layout_centerHorizontal="true">
 
 
@@ -34,18 +34,18 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:id="@+id/mainCardYes"
+            android:id="@+id/yesCardMonitor"
             android:elevation="16dp">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/mainCardYesLinearLayout">
+                android:id="@+id/yesCardMonitorLinearLayout">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/mainImgYes"
+                    android:id="@+id/yesImgMonitor"
                     android:src="@drawable/solarroof"
                     android:layout_margin="8dp" />
 
@@ -53,8 +53,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Yes"
-                    android:id="@+id/mainTextYes"
+                    android:text="@string/yes_monitor"
+                    android:id="@+id/mainTextMonitor"
                     android:textSize="50sp"
                     android:textAlignment="gravity"
                     android:width="200dp"
@@ -72,45 +72,33 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:id="@+id/mainCardNo"
+            android:id="@+id/yesCardDustAnalyzer"
             android:layout_gravity="center"
             android:elevation="16dp">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/mainCardNoLinearLayout">
+                android:id="@+id/yesCardDustAnalyzerLinearLayout">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mainImgNo"
-                android:src="@drawable/redroof"
-                android:layout_margin="8dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="No"
-                android:id="@+id/mainTextNo"
-                android:textSize="50sp"
-                android:textAlignment="gravity"
-                android:width="200dp"
-                android:gravity="center" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/yesImgDustAnalyzer"
+                    android:src="@drawable/redroof"
+                    android:layout_margin="8dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Dust Analyzer"
+                    android:id="@+id/yesTextDustAnalyzer"
+                    android:textSize="50sp"
+                    android:textAlignment="gravity"
+                    android:width="200dp"
+                    android:gravity="center" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Do you have solar panels at home?"
-        android:id="@+id/mainTextQuestion"
-        android:textSize="60sp"
-        android:textAlignment="center"
-        android:layout_marginTop="62dp"
-        android:layout_below="@+id/mainImgLogo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 </RelativeLayout>
