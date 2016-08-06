@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -92,14 +96,31 @@ public class DustAnalyzer extends AppCompatActivity {
 
     }
 
-    private double analyzePhoto(Bitmap photo){
-        double dust;
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        dust = ByteBuffer.wrap(byteArray).getDouble();
-        System.out.println(dust);
-        return dust;
+    private double analyzePhoto(Bitmap inputPhoto){
+        double dust=0;
+
+        int width = inputPhoto.getWidth();
+        int height = inputPhoto.getHeight();
+
+        Bitmap bmpMonochrome = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bmpMonochrome);
+        ColorMatrix ma = new ColorMatrix();
+        ma.setSaturation(0);
+        Paint paint = new Paint();
+        paint.setColorFilter(new ColorMatrixColorFilter(ma));
+        canvas.drawBitmap(inputPhoto, 0, 0, paint);
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int pixel = bmpMonochrome.getPixel(x, y);
+                int lowestByte = pixel & 0xff;
+                if(lowestByte >= 97 && pixel <= 203){
+                    dust = dust + 1;
+                }
+            }
+        }
+
+        return dust / (width * height) * 100;
     }
 
 }
