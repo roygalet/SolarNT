@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
@@ -97,30 +98,79 @@ public class DustAnalyzer extends AppCompatActivity {
     }
 
     private double analyzePhoto(Bitmap inputPhoto){
+//        double dust=0;
+//
+//        int width = inputPhoto.getWidth();
+//        int height = inputPhoto.getHeight();
+//
+//        Bitmap bmpMonochrome = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+//        Canvas canvas = new Canvas(bmpMonochrome);
+//        ColorMatrix ma = new ColorMatrix();
+//        ma.setSaturation(0);
+//        Paint paint = new Paint();
+//        paint.setColorFilter(new ColorMatrixColorFilter(ma));
+//        canvas.drawBitmap(inputPhoto, 0, 0, paint);
+//
+//        for (int y = 0; y < height; y++) {
+//            for (int x = 0; x < width; x++) {
+//                int pixel = bmpMonochrome.getPixel(x, y);
+//                int lowestByte = pixel & 0xff;
+//                if(lowestByte >= 97 && pixel <= 203){
+//                    dust = dust + 1;
+//                }
+//            }
+//        }
+//
+//        dust = dust / (width * height) * 100;
+//        dust = 1.1469*dust - 15.657;
+////        dust = dust + (0.104 * dust - 6.7006);
+//        if(dust < 0)dust=0;
+//        if(dust > 100)dust=100;
+        return getDustPixelsHSV(inputPhoto);
+    }
+
+    private double getDustPixelsHSV(Bitmap inputPhoto){
         double dust=0;
+        float [] hsv = new float[3];
 
         int width = inputPhoto.getWidth();
         int height = inputPhoto.getHeight();
 
-        Bitmap bmpMonochrome = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bmpMonochrome);
-        ColorMatrix ma = new ColorMatrix();
-        ma.setSaturation(0);
-        Paint paint = new Paint();
-        paint.setColorFilter(new ColorMatrixColorFilter(ma));
-        canvas.drawBitmap(inputPhoto, 0, 0, paint);
-
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                int pixel = bmpMonochrome.getPixel(x, y);
-                int lowestByte = pixel & 0xff;
-                if(lowestByte >= 97 && pixel <= 203){
+                int pixel = inputPhoto.getPixel(x, y);
+                Color.colorToHSV(pixel,hsv);
+                if(hsv[0]<90 && hsv[1] > 0.2){
                     dust = dust + 1;
                 }
             }
         }
+        dust = dust / (width * height) * 100;
+        return dust;
+    }
 
-        return dust / (width * height) * 100;
+    private double getDustPixelsRGB(Bitmap inputPhoto){
+        double dust=0;
+        int iRed=0;
+        int iGreen=0;
+        int iBlue=0;
+
+        int width = inputPhoto.getWidth();
+        int height = inputPhoto.getHeight();
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int pixel = inputPhoto.getPixel(x, y);
+                iRed = Color.red(pixel);
+                iGreen = Color.green(pixel);
+                iBlue = Color.blue(pixel);
+                if(iRed >= 75 && iRed <= 145 && iGreen>=95 && iGreen <=155 && iBlue >=80 && iBlue <= 140){
+                    dust = dust + 1;
+                }
+            }
+        }
+        dust = dust / (width * height) * 100;
+        return dust;
     }
 
 }
