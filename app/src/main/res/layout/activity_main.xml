@@ -117,10 +117,10 @@
     <AutoCompleteTextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="New AutoCompleteTextView"
         android:id="@+id/autoCompleteTextView"
         android:layout_below="@+id/mainImgLogo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp" />
+        android:layout_marginTop="44dp"
+        android:hint="Enter Post Code or Suburb"/>
 
 </RelativeLayout>
