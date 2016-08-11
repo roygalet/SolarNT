@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     suburbs = new String[weatherList.getCount()];
                     for(int index = 0; index < suburbs.length; index++){
-                        suburbs[index] = weatherList.getWeatherDataByIndex(index).getPostcode().concat(weatherList.getWeatherDataByIndex(index).getSuburb());
+                        suburbs[index] = weatherList.getWeatherDataByIndex(index).getPostcode().concat(" ").concat(weatherList.getWeatherDataByIndex(index).getSuburb());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
