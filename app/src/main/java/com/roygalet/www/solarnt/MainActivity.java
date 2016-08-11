@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,6 +25,30 @@ public class MainActivity extends AppCompatActivity {
                 onClickYes();
             }
         });
+    }
+
+    private void loadSuburbs(){
+        InputStreamReader is = null;
+        try {
+            is = new InputStreamReader(getAssets().open("data.csv"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        BufferedReader reader = new BufferedReader(is);
+        try {
+            reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onClickYes() {
