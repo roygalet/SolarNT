@@ -14,10 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mainImgLogo"
-        android:src="@drawable/logo256xwide"
         android:contentDescription="@string/solarnt_logo_on_home_screen"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo256xwide" />
 
     <LinearLayout
         android:orientation="horizontal"
