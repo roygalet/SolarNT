@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        (findViewById(R.id.mainCardStats)).setVisibility(View.GONE);
 
         CardView yesCard = (CardView) findViewById(R.id.mainCardYes);
         yesCard.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
                 }
+                (findViewById(R.id.mainCardStats)).setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        ((ImageButton)findViewById(R.id.mainButtonClear)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                autoText.setText("");
+                (findViewById(R.id.mainCardStats)).setVisibility(View.GONE);
             }
         });
     }
