@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 
 public class MainActivity extends AppCompatActivity {
     private WeatherList weatherList;
@@ -33,8 +36,18 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, suburbs);
-        AutoCompleteTextView autoText = (AutoCompleteTextView) findViewById(R.id.mainAutoTextSuburb);
+        final AutoCompleteTextView autoText = (AutoCompleteTextView) findViewById(R.id.mainAutoTextSuburb);
         autoText.setAdapter(adapter);
+        autoText.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(MainActivity.this, autoText.getText(),Toast.LENGTH_LONG).show();
+                WeatherData weatherData = weatherList.getWeatherDataByDisplayName(autoText.getText().toString());
+                ((TextView)findViewById(R.id.mainTextTopMonthlyRainfall)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getRainmean()))).setScale(1,BigDecimal.ROUND_HALF_UP).floatValue()));
+                ((TextView)findViewById(R.id.mainTextTopDailySolarRadiation)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getSolarmean()))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()));
+                ((TextView)findViewById(R.id.mainTextBottomTemperature)).setText(String.valueOf(Math.round(weatherData.getTempminmean())).concat("-").concat(String.valueOf(Math.round(weatherData.getTempmaxmean()))));
+            }
+        });
     }
 
     private void loadSuburbs(){

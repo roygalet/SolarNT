@@ -1,7 +1,6 @@
 package com.roygalet.www.solarnt;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Roy on 12-Aug-16.
@@ -41,7 +40,18 @@ public class WeatherList {
         WeatherData weatherData = null;
         for (int index = 0; index < weatherList.size(); index++){
             if(weatherList.get(index).getPostcode().compareToIgnoreCase(postcode) == 0 && weatherList.get(index).getSuburb().compareToIgnoreCase(suburb) == 0){
-                weatherData = (WeatherData) weatherList.get(index);
+                weatherData =  weatherList.get(index);
+                break;
+            }
+        }
+        return weatherData;
+    }
+
+    public WeatherData getWeatherDataByDisplayName(String displayName){
+        WeatherData weatherData = null;
+        for (int index = 0; index < weatherList.size(); index++){
+            if(weatherList.get(index).getPostcode().concat(" ").concat(weatherList.get(index).getSuburb()).compareToIgnoreCase(displayName) == 0){
+                weatherData = weatherList.get(index);
                 break;
             }
         }
