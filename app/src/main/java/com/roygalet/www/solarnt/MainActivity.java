@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                Toast.makeText(MainActivity.this, autoText.getText(),Toast.LENGTH_LONG).show();
                 WeatherData weatherData = weatherList.getWeatherDataByDisplayName(autoText.getText().toString());
-                ((TextView)findViewById(R.id.mainTextTopMonthlyRainfall)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getRainmean()))).setScale(1,BigDecimal.ROUND_HALF_UP).floatValue()));
+                ((TextView)findViewById(R.id.mainTextTopMonthlyRainfall)).setText(String.valueOf(Math.round(weatherData.getRainmean())));
                 ((TextView)findViewById(R.id.mainTextTopDailySolarRadiation)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getSolarmean()))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()));
                 ((TextView)findViewById(R.id.mainTextBottomTemperature)).setText(String.valueOf(Math.round(weatherData.getTempminmean())).concat("-").concat(String.valueOf(Math.round(weatherData.getTempmaxmean()))));
                 View focusedView = MainActivity.this.getCurrentFocus();
