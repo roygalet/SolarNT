@@ -1,10 +1,12 @@
 package com.roygalet.www.solarnt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView)findViewById(R.id.mainTextTopMonthlyRainfall)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getRainmean()))).setScale(1,BigDecimal.ROUND_HALF_UP).floatValue()));
                 ((TextView)findViewById(R.id.mainTextTopDailySolarRadiation)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getSolarmean()))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()));
                 ((TextView)findViewById(R.id.mainTextBottomTemperature)).setText(String.valueOf(Math.round(weatherData.getTempminmean())).concat("-").concat(String.valueOf(Math.round(weatherData.getTempmaxmean()))));
+                View focusedView = MainActivity.this.getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
+                }
             }
         });
     }
