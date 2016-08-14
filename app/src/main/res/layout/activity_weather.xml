@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
-                android:id="@+id/textView"
+                android:id="@+id/weatherSuburb"
                 android:textColor="#ffffff"
                 android:textSize="40sp" />
         </LinearLayout>
