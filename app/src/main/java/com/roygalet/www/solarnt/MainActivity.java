@@ -2,6 +2,7 @@ package com.roygalet.www.solarnt;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -58,8 +59,24 @@ public class MainActivity extends AppCompatActivity {
                 }
                 (findViewById(R.id.mainCardStats)).setVisibility(View.VISIBLE);
 
+                SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.postcode_surburb), autoText.getText().toString());
+                editor.commit();
             }
         });
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String postCodeSuburb = sharedPref.getString(getString(R.string.postcode_surburb),"");
+        if(postCodeSuburb!=""){
+            WeatherData weatherData = weatherList.getWeatherDataByDisplayName(postCodeSuburb);
+            ((AutoCompleteTextView) findViewById(R.id.mainAutoTextSuburb)).setText(postCodeSuburb);
+            ((TextView)findViewById(R.id.mainTextTopMonthlyRainfall)).setText(String.valueOf(Math.round(weatherData.getRainmean())));
+            ((TextView)findViewById(R.id.mainTextTopDailySolarRadiation)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getSolarmean()))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()));
+            ((TextView)findViewById(R.id.mainTextBottomTemperature)).setText(String.valueOf(Math.round(weatherData.getTempminmean())).concat("-").concat(String.valueOf(Math.round(weatherData.getTempmaxmean()))));
+
+            (findViewById(R.id.mainCardStats)).setVisibility(View.VISIBLE);
+        }
 
         ((ImageButton)findViewById(R.id.mainButtonClear)).setOnClickListener(new View.OnClickListener() {
             @Override

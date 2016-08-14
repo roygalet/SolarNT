@@ -59,7 +59,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/yesCardWeather"
                 android:elevation="16dp"
-                android:layout_margin="20dp">
+                android:layout_margin="20dp"
+                android:visibility="invisible">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
