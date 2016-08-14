@@ -68,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 (findViewById(R.id.mainCardStats)).setVisibility(View.GONE);
             }
         });
+
+        ((TextView)findViewById(R.id.mainTextMoreWeatherInformation)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Weather.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void loadSuburbs(){

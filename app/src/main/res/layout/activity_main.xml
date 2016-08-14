@@ -304,7 +304,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="More Weather Information..."
-                    android:id="@+id/textView"
+                    android:id="@+id/mainTextMoreWeatherInformation"
                     android:layout_gravity="center_horizontal"
                     android:textColor="#ffffff" />
 
