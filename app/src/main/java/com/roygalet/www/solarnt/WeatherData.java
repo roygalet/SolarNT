@@ -1,9 +1,12 @@
 package com.roygalet.www.solarnt;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Roy on 12-Aug-16.
  */
-public class WeatherData {
+public class WeatherData implements Parcelable{
     private int id;
     private String postcode;
     private String suburb;
@@ -266,5 +269,15 @@ public class WeatherData {
 
     public void setTempminmean(float tempminmean) {
         this.tempminmean = tempminmean;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

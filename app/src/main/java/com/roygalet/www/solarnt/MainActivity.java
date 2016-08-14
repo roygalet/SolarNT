@@ -72,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.mainTextMoreWeatherInformation)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("weather", weatherList.getWeatherDataByDisplayName(autoText.getText().toString()));
                 Intent intent = new Intent(MainActivity.this, Weather.class);
+                intent.putExtra("weather", bundle);
                 startActivity(intent);
             }
         });
