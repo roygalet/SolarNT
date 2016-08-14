@@ -44,13 +44,21 @@ public class YesActivity extends AppCompatActivity {
             }
         }
 
-
-
         CardView dustAnalyzer = (CardView) findViewById(R.id.yesCardDustAnalyzer);
         dustAnalyzer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDustAnalyzer();
+            }
+        });
+
+        ((CardView)findViewById(R.id.yesCardMonitor)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Uri uri = Uri.parse("http://138.80.64.225");
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                Intent intent = new Intent(YesActivity.this, Monitor.class);
+                startActivity(intent);
             }
         });
     }

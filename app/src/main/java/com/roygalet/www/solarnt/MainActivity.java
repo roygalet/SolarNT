@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 ((TextView)findViewById(R.id.mainTextTopDailySolarRadiation)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getSolarmean()))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()));
                 ((TextView)findViewById(R.id.mainTextBottomTemperature)).setText(String.valueOf(Math.round(weatherData.getTempminmean())).concat("-").concat(String.valueOf(Math.round(weatherData.getTempmaxmean()))));
                 View focusedView = MainActivity.this.getCurrentFocus();
-                if (view != null) {
+                if (focusedView != null) {
                     InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
                 }
@@ -75,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.mainTextTopDailySolarRadiation)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getSolarmean()))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()));
             ((TextView)findViewById(R.id.mainTextBottomTemperature)).setText(String.valueOf(Math.round(weatherData.getTempminmean())).concat("-").concat(String.valueOf(Math.round(weatherData.getTempmaxmean()))));
 
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(autoText.getWindowToken(), 0);
+
             (findViewById(R.id.mainCardStats)).setVisibility(View.VISIBLE);
         }
 
@@ -93,6 +96,20 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putParcelable("weather", weatherList.getWeatherDataByDisplayName(autoText.getText().toString()));
                 Intent intent = new Intent(MainActivity.this, Weather.class);
                 intent.putExtra("weather", bundle);
+                startActivity(intent);
+            }
+        });
+
+        ((CardView)findViewById(R.id.mainCardNo)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NoActivity.class);
+                WeatherData weatherData = weatherList.getWeatherDataByDisplayName(((TextView)findViewById(R.id.mainAutoTextSuburb)).getText().toString());
+                if(weatherData!=null){
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("weather", weatherData);
+                    intent.putExtra("weather", bundle);
+                }
                 startActivity(intent);
             }
         });

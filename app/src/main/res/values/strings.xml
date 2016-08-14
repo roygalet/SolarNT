@@ -8,4 +8,6 @@
     <string name="no_image_selected">No Image Selected.\n Choose from Camera or Gallery</string>
     <string name="title_activity_weather">Weather</string>
     <string name="postcode_surburb"></string>
+    <string name="title_activity_monitor">Monitor</string>
+    <string name="title_activity_no">NoActivity</string>
 </resources>

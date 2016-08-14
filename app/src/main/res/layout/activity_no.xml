@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.roygalet.www.solarnt.YesActivity">
+    tools:context="com.roygalet.www.solarnt.NoActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -57,15 +58,15 @@
             <android.support.v7.widget.CardView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/yesCardWeather"
+                android:id="@+id/noCardWeather"
                 android:elevation="16dp"
                 android:layout_margin="20dp"
-                android:visibility="invisible">
+                android:visibility="visible">
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/yesCardWeatherLinearLayout">
+                    android:id="@+id/noCardWeatherLinearLayout">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -135,7 +136,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="0.0"
-                                android:id="@+id/yesRainFall"
+                                android:id="@+id/noRainFall"
                                 android:textColor="#ffffff"
                                 android:textSize="60sp"
                                 android:textAlignment="center" />
@@ -145,7 +146,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="0-0"
-                                android:id="@+id/yesTemp"
+                                android:id="@+id/noTemp"
                                 android:textColor="#ffffff"
                                 android:textSize="60sp"
                                 android:textAlignment="center" />
@@ -155,7 +156,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceLarge"
                                 android:text="0.00"
-                                android:id="@+id/yesSolar"
+                                android:id="@+id/noSolar"
                                 android:textColor="#ffffff"
                                 android:textSize="60sp"
                                 android:textAlignment="center" />
@@ -232,7 +233,7 @@
                             android:layout_height="wrap_content"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="No Location Selected"
-                            android:id="@+id/yesSuburb"
+                            android:id="@+id/noSuburb"
                             android:textSize="40sp"
                             android:textAlignment="gravity"
                             android:width="200dp"
@@ -248,7 +249,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="Weather Statistics"
-                        android:id="@+id/yesTextWeather"
+                        android:id="@+id/noTextWeather"
                         android:textSize="40sp"
                         android:textAlignment="gravity"
                         android:width="200dp"
@@ -273,80 +274,8 @@
             android:layout_marginTop="70dp">
 
 
-
-            <android.support.v7.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:id="@+id/yesCardMonitor"
-                android:elevation="16dp">
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/yesCardMonitorLinearLayout">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:id="@+id/yesImgMonitor"
-                        android:src="@drawable/monitor"
-                        android:layout_margin="8dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="@string/power_monitor"
-                        android:id="@+id/mainTextMonitor"
-                        android:textSize="40sp"
-                        android:textAlignment="gravity"
-                        android:width="200dp"
-                        android:gravity="center"
-                        android:textIsSelectable="false" />
-
-                </LinearLayout>
-
-
-            </android.support.v7.widget.CardView>
-
-
-
-
-            <android.support.v7.widget.CardView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/yesCardDustAnalyzer"
-                android:layout_gravity="center"
-                android:elevation="16dp">
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/yesCardDustAnalyzerLinearLayout">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/yesImgDustAnalyzer"
-                        android:src="@drawable/dustanalyzer"
-                        android:layout_margin="8dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Dust Analyzer"
-                        android:id="@+id/yesTextDustAnalyzer"
-                        android:textSize="40sp"
-                        android:textAlignment="gravity"
-                        android:width="200dp"
-                        android:gravity="center" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </RelativeLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>
