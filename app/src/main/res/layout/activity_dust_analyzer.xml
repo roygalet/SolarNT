@@ -25,7 +25,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="512dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -52,28 +52,30 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/dustTextPercent"
-            android:layout_marginTop="78dp"
+            android:layout_marginTop="100dp"
             android:layout_below="@+id/dustImgImage"
             android:layout_centerHorizontal="true"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textSize="60sp" />
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/dustButtonCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="230dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="150dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_camera"
         app:layout_anchor="@id/dustImgImage"
         app:layout_anchorGravity="bottom|left|end"
         android:baselineAlignBottom="false"
-        app:backgroundTint="@android:color/holo_blue_dark" />
+        app:backgroundTint="@android:color/holo_blue_dark"
+        android:adjustViewBounds="false" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/dustButtonGallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="230dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="150dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_gallery"
         app:layout_anchor="@id/dustImgImage"
