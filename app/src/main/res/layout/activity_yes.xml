@@ -44,11 +44,232 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="144dp"
+            android:id="@+id/linearLayout12"
+            android:gravity="center_horizontal"
             android:layout_below="@+id/yesImgLogo"
-            android:layout_centerHorizontal="true">
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/yesCardWeather"
+                android:elevation="16dp"
+                android:layout_margin="20dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/yesCardWeatherLinearLayout">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_below="@+id/mainAutoTextSuburb"
+                        android:id="@+id/relativeLayout"
+                        android:visibility="visible"
+                        android:background="@drawable/wetdry">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:weightSum="1"
+                            android:id="@+id/linearLayout13"
+                            android:layout_marginTop="52dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true">
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="Rainfall"
+                                android:id="@+id/textView"
+                                android:textColor="#ffffff"
+                                android:textSize="20sp"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="Temperature"
+                                android:id="@+id/textView6"
+                                android:textColor="#ffffff"
+                                android:textSize="20sp"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text=" Solar Exposure"
+                                android:id="@+id/textView7"
+                                android:textColor="#ffffff"
+                                android:textSize="20sp"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:weightSum="1"
+                            android:layout_below="@+id/linearLayout13"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/linearLayout14"
+                            android:visibility="visible" >
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="0.0"
+                                android:id="@+id/yesRainFall"
+                                android:textColor="#ffffff"
+                                android:textSize="60sp"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="0-0"
+                                android:id="@+id/yesTemp"
+                                android:textColor="#ffffff"
+                                android:textSize="60sp"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="0.00"
+                                android:id="@+id/yesSolar"
+                                android:textColor="#ffffff"
+                                android:textSize="60sp"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:weightSum="1"
+                            android:id="@+id/linearLayout15"
+                            android:layout_below="@+id/linearLayout14"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" >
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="millimetres per month"
+                                android:id="@+id/textView15"
+                                android:textColor="#ffffff"
+                                android:textSize="12sp"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="Degrees Celcius"
+                                android:id="@+id/textView16"
+                                android:textColor="#ffffff"
+                                android:textSize="12sp"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="kiloWatts per sqm daily"
+                                android:id="@+id/textView17"
+                                android:textColor="#ffffff"
+                                android:textSize="12sp"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_below="@+id/linearLayout15"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:id="@+id/linearLayout16" >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:text="Source: Bureau of Meteorology (2007 - 2016)"
+                                android:id="@+id/textView23"
+                                android:textColor="#ffffff"
+                                android:textSize="12sp"
+                                android:textAlignment="center"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:text="No Location Selected"
+                            android:id="@+id/yesSuburb"
+                            android:textSize="40sp"
+                            android:textAlignment="gravity"
+                            android:width="200dp"
+                            android:gravity="center"
+                            android:textIsSelectable="false"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="#ffffff" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Weather Statistics"
+                        android:id="@+id/yesTextWeather"
+                        android:textSize="40sp"
+                        android:textAlignment="gravity"
+                        android:width="200dp"
+                        android:gravity="center"
+                        android:textIsSelectable="false" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/linearLayout12"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="70dp">
 
 
 

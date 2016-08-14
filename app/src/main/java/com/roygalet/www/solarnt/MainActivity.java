@@ -113,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickYes() {
         Intent intent = new Intent(this, YesActivity.class);
+        WeatherData weatherData = weatherList.getWeatherDataByDisplayName(((TextView)findViewById(R.id.mainAutoTextSuburb)).getText().toString());
+        if(weatherData!=null){
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("weather", weatherData);
+            intent.putExtra("weather", bundle);
+        }
         startActivity(intent);
     }
 }
