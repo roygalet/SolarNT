@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class NoActivity extends AppCompatActivity {
@@ -43,6 +44,19 @@ public class NoActivity extends AppCompatActivity {
                 ((CardView)findViewById(R.id.noCardWeather)).setVisibility(View.INVISIBLE);
             }
         }
+
+        ((CardView)findViewById(R.id.noCardCalculator)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NoActivity.this, Calculator.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("weather", (WeatherData)getIntent().getExtras().getBundle("weather").getParcelable("weather"));
+                intent.putExtra("weather", bundle);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
 }
