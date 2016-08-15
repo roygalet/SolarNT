@@ -24,6 +24,7 @@ public class DustAnalyzer extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
     private static final int SELECT_PICTURE = 100;
     Bitmap photo;
+    WeatherData weatherData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,9 @@ public class DustAnalyzer extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Bundle bundle = getIntent().getExtras();
+        weatherData = bundle.getBundle("weather").getParcelable("weather");
 
         ((LinearLayout)findViewById(R.id.dustLinearLayout)).setVisibility(View.INVISIBLE);
 
@@ -156,6 +160,14 @@ public class DustAnalyzer extends AppCompatActivity {
             }
         }
         dust = dust / (width * height) * 100;
+        double powerLoss = weatherData.getSolarmean() * 4.5 * 1.001635544;
+        double cost = powerLoss * 0.2595;
+        ((TextView)findViewById(R.id.dustMessage)).setText("A fraction of the Solar Exposure is being blocked by dust resulting to lower than usual power conversion efficiency of the solar PV system."
+                .concat("A 4.5 kW PV system could lose up to ")
+                .concat(String.valueOf(BigDecimal.valueOf(powerLoss).setScale(1, BigDecimal.ROUND_HALF_UP))
+                        .concat(" kWh amounting to $ ")
+                        .concat(String.valueOf(BigDecimal.valueOf(cost).setScale(2, BigDecimal.ROUND_HALF_UP)))
+                .concat(" daily.  If this value is significantly high, cleaning may improve system efficiency.")));
         return dust;
     }
 

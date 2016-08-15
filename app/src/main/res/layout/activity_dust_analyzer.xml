@@ -101,7 +101,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/textView14"
+                android:id="@+id/dustMessage"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:layout_below="@+id/dustTextNoImage"

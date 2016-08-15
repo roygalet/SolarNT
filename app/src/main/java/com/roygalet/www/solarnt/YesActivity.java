@@ -64,7 +64,10 @@ public class YesActivity extends AppCompatActivity {
     }
 
     private void showDustAnalyzer(){
-        Intent intent = new Intent(this,DustAnalyzer.class);
+        Intent intent = new Intent(YesActivity.this, DustAnalyzer.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("weather", (WeatherData)getIntent().getExtras().getBundle("weather").getParcelable("weather"));
+        intent.putExtra("weather", bundle);
         startActivity(intent);
     }
 
