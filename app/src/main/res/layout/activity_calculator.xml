@@ -25,7 +25,10 @@
         android:layout_height="match_parent"
         android:layout_marginTop="64dp"
         android:background="#353333"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -40,249 +43,352 @@
             android:layout_alignParentEnd="true"
             android:textAlignment="center" />
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Solar Exposure"
-            android:id="@+id/textView24"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/calcSuburb"
-            android:layout_centerHorizontal="true" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Daily Solar Exposure"
+                android:id="@+id/textView24"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:text="Weather Station:"
+                android:id="@+id/calcStation"
+                android:textColor="#ffffff"
+                android:textAlignment="textStart"
+                android:layout_below="@+id/textView24"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0.00"
+                android:id="@+id/calcSolarExposure"
+                android:textColor="#ffffff"
+                android:textSize="48sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="kiloWatts per sqm daily"
+                android:id="@+id/textView33"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_below="@+id/calcSolarExposure"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:text="Weather Station:"
-            android:id="@+id/calcStation"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView24"
-            android:layout_centerHorizontal="true" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Solar PV System Capacity"
+                android:id="@+id/textView34"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="1.5"
+                android:id="@+id/calcCapacity"
+                android:textColor="#ffffff"
+                android:textSize="48sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="kiloWatts"
+                android:id="@+id/textView22"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/calcCapacity"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/calcSeekbarCapacity"
+                android:max="44"
+                android:progress="14"
+                android:layout_below="@+id/textView34"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@+id/calcCapacity"
+                android:layout_toStartOf="@+id/calcCapacity" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="0.00"
-            android:id="@+id/calcSolarExposure"
-            android:textColor="#ffffff"
-            android:textSize="48sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/calcStation"
-            android:layout_centerHorizontal="true" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Potential Daily Output"
+                android:id="@+id/textView36"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="00.0-00.0"
+                android:id="@+id/calcPotentialPower"
+                android:textColor="#ffffff"
+                android:textSize="48sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="kiloWatts"
+                android:id="@+id/textView25"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/calcPotentialPower"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Based on data from Desert Knowledge Australia Solar Centre in Alice Springs NT"
+                android:id="@+id/textView41"
+                android:textColor="#ffffff"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/textView36"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="kiloWatts per sqm daily"
-            android:id="@+id/textView33"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:layout_below="@+id/calcSolarExposure"
-            android:layout_alignRight="@+id/textView24"
-            android:layout_alignEnd="@+id/textView24" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Annual Savings"
+                android:id="@+id/textView38"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0000"
+                android:id="@+id/calcSavings"
+                android:textColor="#ffffff"
+                android:textSize="48sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Based on Jacana Energy $0.2595 per kW domestic flat rate tariff"
+                android:id="@+id/textView32"
+                android:textColor="#ffffff"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/textView38"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Australian Dollars ($)"
+                android:id="@+id/textView37"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/calcSavings"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Solar Panel Capacity"
-            android:id="@+id/textView34"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView33"
-            android:layout_centerHorizontal="true" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_weight="0.19">
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Installation Cost"
+                android:id="@+id/textView40"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="5000"
+                android:id="@+id/calcCost"
+                android:textColor="#ffffff"
+                android:textSize="48sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/calcSeekbarCost"
+                android:max="20000"
+                android:progress="5000"
+                android:layout_below="@+id/textView40"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/calcCost" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Australian Dollars ($)"
+                android:id="@+id/textView39"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/calcCost"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="1.5"
-            android:id="@+id/calcCapacity"
-            android:textColor="#ffffff"
-            android:textSize="48sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView34"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginTop="32dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="kiloWatts"
-            android:id="@+id/textView22"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:layout_below="@+id/calcSolarExposure"
-            android:layout_alignRight="@+id/textView24"
-            android:layout_alignEnd="@+id/textView24"
-            android:layout_gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Return on Investment"
+                android:id="@+id/textView42"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/calcSeekbarCapacity"
-            android:layout_below="@+id/calcCapacity"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:max="44"
-            android:progress="14" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0.00"
+                android:id="@+id/calcReturns"
+                android:textColor="#ffffff"
+                android:textSize="48sp"
+                android:textAlignment="center"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Potential Daily Output"
-            android:id="@+id/textView36"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/calcSeekbarCapacity"
-            android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Years"
+                android:id="@+id/textView35"
+                android:textColor="#ffffff"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/calcReturns"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="0.00"
-            android:id="@+id/calcPotentialPower"
-            android:textColor="#ffffff"
-            android:textSize="48sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView36"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="kiloWatts"
-            android:id="@+id/textView25"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:layout_below="@+id/calcSolarExposure"
-            android:layout_alignRight="@+id/textView24"
-            android:layout_alignEnd="@+id/textView24"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Annual Savings"
-            android:id="@+id/textView38"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/calcPotentialPower"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="0.00"
-            android:id="@+id/calcSavings"
-            android:textColor="#ffffff"
-            android:textSize="48sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView38"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Based on $0.2595 per kW flat rate tariff"
-            android:id="@+id/textView32"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:layout_below="@+id/calcSolarExposure"
-            android:layout_alignRight="@+id/textView24"
-            android:layout_alignEnd="@+id/textView24"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Expected Installation Cost"
-            android:id="@+id/textView40"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/calcSavings"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="5000"
-            android:id="@+id/calcCost"
-            android:textColor="#ffffff"
-            android:textSize="48sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView40"
-            android:layout_centerHorizontal="true" />
-
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/calcSeekbarCost"
-            android:layout_alignParentStart="true"
-            android:max="20000"
-            android:layout_below="@+id/calcCost"
-            android:layout_centerHorizontal="true"
-            android:progress="5000" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Return on Investment"
-            android:id="@+id/textView42"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/calcSeekbarCost"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="0.00"
-            android:id="@+id/calcReturns"
-            android:textColor="#ffffff"
-            android:textSize="48sp"
-            android:textAlignment="center"
-            android:layout_below="@+id/textView42"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Years"
-            android:id="@+id/textView35"
-            android:textColor="#ffffff"
-            android:textAlignment="center"
-            android:textSize="16sp"
-            android:layout_below="@+id/calcSolarExposure"
-            android:layout_alignRight="@+id/textView24"
-            android:layout_alignEnd="@+id/textView24"
-            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
