@@ -3,6 +3,7 @@ package com.roygalet.www.solarnt;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,7 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -30,11 +34,17 @@ public class DustAnalyzer extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        ((LinearLayout)findViewById(R.id.dustLinearLayout)).setVisibility(View.INVISIBLE);
+
         FloatingActionButton buttonCamera = (FloatingActionButton) findViewById(R.id.dustButtonCamera);
         buttonCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickCamera();
+                try {
+                    onClickCamera();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -48,7 +58,8 @@ public class DustAnalyzer extends AppCompatActivity {
 
     }
 
-    private void onClickCamera(){
+    private void onClickCamera() throws InterruptedException {
+        photo = null;
         Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
     }
@@ -61,10 +72,11 @@ public class DustAnalyzer extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        ImageView imageView = (ImageView) findViewById(R.id.dustImgImage);
-        TextView textNoImageSelected = (TextView) findViewById(R.id.dustTextNoImage);
-        TextView textPercent = (TextView) findViewById(R.id.dustTextPercent);
         if (resultCode == RESULT_OK) {
+            ImageView imageView = (ImageView) findViewById(R.id.dustImgImage);
+            TextView textNoImageSelected = (TextView) findViewById(R.id.dustTextNoImage);
+            TextView textPercent = (TextView) findViewById(R.id.dustTextPercent);
+            Toast.makeText(this, "Processing image ... Please wait", Toast.LENGTH_LONG);
             if (requestCode == SELECT_PICTURE) {
                 // Get the url from data
                 Uri selectedImageUri = data.getData();
@@ -76,13 +88,17 @@ public class DustAnalyzer extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    Toast.makeText(this, "Processing image ... Please wait", Toast.LENGTH_LONG);
                     textPercent.setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(analyzePhoto(photo)))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()).concat(" %"));
                 }
             }
             if (requestCode == CAMERA_REQUEST) {
                 photo = (Bitmap) data.getExtras().get("data");
-                imageView.setImageBitmap(photo);
+//                imageView.setImageBitmap(photo);
+                BitmapDrawable ob = new BitmapDrawable(getResources(), photo);
+                ((RelativeLayout)findViewById(R.id.dustRelativeLayout)).setBackground(ob);
                 textNoImageSelected.setText("");
+
                 textPercent.setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(analyzePhoto(photo)))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()).concat(" %"));
 //                textPercent.setText(Double.toString(analyzePhoto(photo)));
             }
@@ -119,6 +135,7 @@ public class DustAnalyzer extends AppCompatActivity {
 ////        dust = dust + (0.104 * dust - 6.7006);
 //        if(dust < 0)dust=0;
 //        if(dust > 100)dust=100;
+        ((LinearLayout)findViewById(R.id.dustLinearLayout)).setVisibility(View.VISIBLE);
         return getDustPixelsHSV(inputPhoto);
     }
 

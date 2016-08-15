@@ -22,7 +22,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/dustRelativeLayout">
 
         <ImageView
             android:layout_width="fill_parent"
@@ -33,7 +34,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="66dp"
-            android:background="@color/accent_material_dark" />
+            android:background="@color/accent_material_dark"
+            android:layout_alignParentBottom="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,16 +49,68 @@
             android:text="@string/no_image_selected"
             android:background="@android:color/transparent" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/dustTextPercent"
-            android:layout_marginTop="100dp"
-            android:layout_below="@+id/dustImgImage"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:textSize="60sp" />
+            android:id="@+id/dustLinearLayout"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#b9000000"
+            android:layout_margin="32dp"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView8"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:text="Analysis Complete"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/dustTextPercent"
+                android:textAlignment="center"
+                android:textSize="90sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"
+                android:layout_margin="16dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView9"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:text="Estimated surface area covered by dust"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView14"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:text="A fraction of the Solar Exposure is being blocked by dust resulting to lower than usual power conversion efficiency of the solar PV system.  If this value is significantly high, cleaning may improve system efficiency."
+                android:textColor="#ffffff"
+                android:layout_margin="8dp" />
+        </LinearLayout>
+
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
