@@ -3,7 +3,6 @@ package com.roygalet.www.solarnt;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -98,9 +96,9 @@ public class DustAnalyzer extends AppCompatActivity {
             }
             if (requestCode == CAMERA_REQUEST) {
                 photo = (Bitmap) data.getExtras().get("data");
-//                imageView.setImageBitmap(photo);
-                BitmapDrawable ob = new BitmapDrawable(getResources(), photo);
-                ((RelativeLayout)findViewById(R.id.dustRelativeLayout)).setBackground(ob);
+                imageView.setImageBitmap(photo);
+//                BitmapDrawable ob = new BitmapDrawable(getResources(), photo);
+//                ((RelativeLayout)findViewById(R.id.dustRelativeLayout)).setBackground(ob);
                 textNoImageSelected.setText("");
 
                 textPercent.setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(analyzePhoto(photo)))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()).concat(" %"));
@@ -160,14 +158,14 @@ public class DustAnalyzer extends AppCompatActivity {
             }
         }
         dust = dust / (width * height) * 100;
-        double powerLoss = weatherData.getSolarmean() * 4.5 * 1.001635544;
+        double powerLoss = weatherData.getSolarmean() * 4.5 * 1.001635544 * dust/100;
         double cost = powerLoss * 0.2595;
         ((TextView)findViewById(R.id.dustMessage)).setText("A fraction of the Solar Exposure is being blocked by dust resulting to lower than usual power conversion efficiency of the solar PV system."
-                .concat("A 4.5 kW PV system could lose up to ")
+                .concat("\n\nA 4.5 kW PV system could lose up to ")
                 .concat(String.valueOf(BigDecimal.valueOf(powerLoss).setScale(1, BigDecimal.ROUND_HALF_UP))
                         .concat(" kWh amounting to $ ")
                         .concat(String.valueOf(BigDecimal.valueOf(cost).setScale(2, BigDecimal.ROUND_HALF_UP)))
-                .concat(" daily.  If this value is significantly high, cleaning may improve system efficiency.")));
+                .concat(" daily.\n\nCleaning may improve system efficiency.\n\n")));
         return dust;
     }
 

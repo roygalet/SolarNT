@@ -34,7 +34,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="66dp"
-            android:background="@color/accent_material_dark"
+            android:background="@drawable/dustbackground"
             android:layout_alignParentBottom="true" />
 
         <TextView
@@ -47,19 +47,22 @@
             android:layout_marginTop="205dp"
             android:textAlignment="center"
             android:text="@string/no_image_selected"
-            android:background="@android:color/transparent" />
+            android:background="@android:color/transparent"
+            android:textColor="#ffffff"
+            android:textSize="32sp" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dustLinearLayout"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:background="#b9000000"
-            android:layout_margin="32dp"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:layout_marginTop="114dp"
+            android:layout_alignTop="@+id/dustImgImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
             <TextView
                 android:layout_width="fill_parent"

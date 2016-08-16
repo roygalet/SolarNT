@@ -61,6 +61,17 @@ public class YesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ((CardView)findViewById(R.id.yesCardCalculator)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(YesActivity.this, Calculator.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("weather", (WeatherData)getIntent().getExtras().getBundle("weather").getParcelable("weather"));
+                intent.putExtra("weather", bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showDustAnalyzer(){
