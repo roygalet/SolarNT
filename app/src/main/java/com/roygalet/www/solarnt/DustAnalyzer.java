@@ -184,12 +184,13 @@ public class DustAnalyzer extends AppCompatActivity {
             }
             ((LinearLayout)findViewById(R.id.dustLinearLayout)).setVisibility(View.VISIBLE);
             ((TextView)findViewById(R.id.dustMessage)).setText("A fraction of the Solar Exposure is being blocked by dust resulting to lower than usual power conversion efficiency of the solar PV system."
-                    .concat("\n\nA 4.5 kW PV system in ").concat(weatherData.getSuburb()).concat(" could lose up to ")
+                    .concat("\n\nA 4.5 kW PV system in ").concat(weatherData.getSuburb()).concat("* could lose up to ")
                     .concat(String.valueOf(BigDecimal.valueOf(powerLoss).setScale(1, BigDecimal.ROUND_HALF_UP))
-                            .concat(" kWh amounting to $ ")
+                            .concat(" kWh** amounting to $ ")
                             .concat(String.valueOf(BigDecimal.valueOf(cost).setScale(2, BigDecimal.ROUND_HALF_UP)))
-                            .concat("* daily.\n\nCleaning may improve system efficiency.\n\n")));
+                            .concat("*** daily.\n\nCleaning may improve system efficiency.\n\n")));
             ((TextView)findViewById(R.id.dustTextPercent)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(aDouble))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()).concat(" %"));
+            ((TextView)findViewById(R.id.dustTextCost)).setVisibility(View.VISIBLE);
         }
 
         @Override

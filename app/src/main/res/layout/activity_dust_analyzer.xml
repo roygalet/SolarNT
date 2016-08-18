@@ -118,15 +118,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="*Cost based on Jacana Energy $0.2595 per kW domestic flat rate tariff"
+            android:text="* Solar exposure data from Bureau of Meteorology\n** Based on data from Desert Knowledge Australia Solar Centre in Alice Springs NT\n*** Cost based on Jacana Energy $0.2595 per kWh domestic flat rate tariff"
             android:id="@+id/dustTextCost"
             android:textColor="#ffffff"
             android:textAlignment="center"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:layout_gravity="center_horizontal"
             android:layout_alignBottom="@+id/dustImgImage"
             android:layout_centerHorizontal="true"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            android:layout_margin="8dp"
+            android:background="#de271f1f" />
 
     </RelativeLayout>
 
