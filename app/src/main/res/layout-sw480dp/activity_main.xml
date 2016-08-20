@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.roygalet.www.solarnt.MainActivity"
-    android:background="@drawable/background"
-    android:padding="2dp">
+    android:background="@drawable/background">
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:id="@+id/mainImgLogo"
         android:contentDescription="@string/solarnt_logo_on_home_screen"
         android:layout_alignParentTop="true"
@@ -27,7 +30,7 @@
 
 
         <android.support.v7.widget.CardView
-            android:layout_width="120dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:id="@+id/mainCardYes"
@@ -40,10 +43,10 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="86dp"
+                    android:layout_height="wrap_content"
                     android:id="@+id/mainImgYes"
                     android:src="@drawable/solarroof"
-                    android:layout_margin="2dp" />
+                    android:layout_margin="8dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,7 +54,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Yes"
                     android:id="@+id/mainTextYes"
-                    android:textSize="20sp"
+                    android:textSize="50sp"
                     android:textAlignment="gravity"
                     android:width="200dp"
                     android:gravity="center" />
@@ -65,7 +68,7 @@
 
 
         <android.support.v7.widget.CardView
-            android:layout_width="120dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:id="@+id/mainCardNo"
@@ -79,17 +82,17 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="86dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/mainImgNo"
                 android:src="@drawable/redroof"
-                android:layout_margin="2dp" />
+                android:layout_margin="8dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="No"
                 android:id="@+id/mainTextNo"
-                android:textSize="20sp"
+                android:textSize="50sp"
                 android:textAlignment="gravity"
                 android:width="200dp"
                 android:gravity="center" />
@@ -103,15 +106,16 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Do you have solar panels at home?"
         android:id="@+id/mainTextQuestion"
-        android:textSize="20sp"
+        android:textSize="32sp"
         android:textAlignment="center"
         android:layout_below="@+id/mainCardQuickStats"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="57dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/wetdry"
         android:layout_below="@+id/mainImgLogo"
         android:layout_alignParentLeft="true"
@@ -124,7 +128,7 @@
             android:id="@+id/mainAutoTextSuburb"
             android:hint="Enter Post Code or Suburb"
             android:textAlignment="center"
-            android:textSize="14sp"
+            android:textSize="30sp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -132,8 +136,7 @@
             android:textColorHint="#80ffffff"
             android:singleLine="true"
             android:layout_toLeftOf="@+id/mainButtonClear"
-            android:layout_toStartOf="@+id/mainButtonClear"
-            android:textIsSelectable="false" />
+            android:layout_toStartOf="@+id/mainButtonClear" />
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -163,40 +166,37 @@
                 android:gravity="center_horizontal"
                 android:weightSum="1"
                 android:id="@+id/mainLabelTop"
-                android:layout_marginTop="2dp">
+                android:layout_marginTop="8dp">
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Rainfall"
                     android:id="@+id/mainLabelTopMonthlyRainfall"
                     android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:textIsSelectable="false" />
+                    android:textSize="20sp"
+                    android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Temperature"
                     android:id="@+id/mainLabelBottomAverageTemperature"
                     android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:textIsSelectable="false" />
+                    android:textSize="20sp"
+                    android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text=" Solar Exposure"
                     android:id="@+id/mainLabelTopDailySolarRadiation"
                     android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    android:textAlignment="center"
-                    android:textIsSelectable="false" />
+                    android:textSize="20sp"
+                    android:textAlignment="center" />
 
             </LinearLayout>
 
@@ -213,33 +213,33 @@
                 android:visibility="visible">
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0.0"
                     android:id="@+id/mainTextTopMonthlyRainfall"
                     android:textColor="#ffffff"
-                    android:textSize="30sp"
+                    android:textSize="60sp"
                     android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0-0"
                     android:id="@+id/mainTextBottomTemperature"
                     android:textColor="#ffffff"
-                    android:textSize="30sp"
+                    android:textSize="60sp"
                     android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="0.00"
                     android:id="@+id/mainTextTopDailySolarRadiation"
                     android:textColor="#ffffff"
-                    android:textSize="30sp"
+                    android:textSize="60sp"
                     android:textAlignment="center" />
 
             </LinearLayout>
@@ -256,33 +256,33 @@
                 android:layout_alignParentStart="true">
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="millimetres per month"
                     android:id="@+id/mainLabelTopMillimetres"
                     android:textColor="#ffffff"
-                    android:textSize="8sp"
+                    android:textSize="12sp"
                     android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Degrees Celcius"
                     android:id="@+id/mainLabelBottomDegrees"
                     android:textColor="#ffffff"
-                    android:textSize="8sp"
+                    android:textSize="12sp"
                     android:textAlignment="center" />
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="kiloWatts per sqm daily"
                     android:id="@+id/mainLabelTopKiloWatts"
                     android:textColor="#ffffff"
-                    android:textSize="8sp"
+                    android:textSize="12sp"
                     android:textAlignment="center" />
 
             </LinearLayout>
@@ -306,8 +306,7 @@
                     android:text="More Weather Information..."
                     android:id="@+id/mainTextMoreWeatherInformation"
                     android:layout_gravity="center_horizontal"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:textColor="#ffffff" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -316,7 +315,7 @@
                     android:text="Source: Bureau of Meteorology (2007 - 2016)"
                     android:id="@+id/mainLabelBottomSource"
                     android:textColor="#ffffff"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textAlignment="center"
                     android:textStyle="italic" />
             </LinearLayout>
