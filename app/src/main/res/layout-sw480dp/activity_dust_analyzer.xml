@@ -44,12 +44,12 @@
             android:id="@+id/dustTextNoImage"
             android:layout_alignTop="@+id/dustImgImage"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="205dp"
             android:textAlignment="center"
             android:text="@string/no_image_selected"
             android:background="@android:color/transparent"
             android:textColor="#ffffff"
-            android:textSize="24sp" />
+            android:textSize="32sp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -58,9 +58,11 @@
             android:id="@+id/dustLinearLayout"
             android:background="#b9000000"
             android:padding="16dp"
+            android:layout_marginTop="114dp"
             android:layout_alignTop="@+id/dustImgImage"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -84,7 +86,7 @@
                 android:layout_below="@+id/dustTextNoImage"
                 android:layout_centerHorizontal="true"
                 android:textColor="#ffffff"
-                android:layout_margin="2dp" />
+                android:layout_margin="16dp" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -92,7 +94,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/textView9"
                 android:textAlignment="center"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:layout_below="@+id/dustTextNoImage"
                 android:layout_centerHorizontal="true"
                 android:text="Estimated surface area covered by dust"
@@ -104,7 +106,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/dustMessage"
                 android:textAlignment="center"
-                android:textSize="12sp"
+                android:textSize="20sp"
                 android:layout_below="@+id/dustTextNoImage"
                 android:layout_centerHorizontal="true"
                 android:text="A fraction of the Solar Exposure is being blocked by dust resulting to lower than usual power conversion efficiency of the solar PV system.  If this value is significantly high, cleaning may improve system efficiency."
@@ -132,9 +134,9 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/dustButtonCamera"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_margin="32dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="150dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_camera"
         app:layout_anchor="@id/dustImgImage"
@@ -144,9 +146,9 @@
         android:adjustViewBounds="false" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/dustButtonGallery"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_margin="32dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="150dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_gallery"
         app:layout_anchor="@id/dustImgImage"
