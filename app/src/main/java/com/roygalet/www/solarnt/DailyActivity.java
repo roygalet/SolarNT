@@ -1,12 +1,14 @@
 package com.roygalet.www.solarnt;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -17,7 +19,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DailyActivity extends AppCompatActivity {
     private String data;
@@ -99,19 +103,44 @@ public class DailyActivity extends AppCompatActivity {
                 String[][] pvoutput = new String[records.length][];
                 ArrayList<BarEntry> powerData = new ArrayList<>();
                 ArrayList<String> dateData = new ArrayList<>();
-
+                int year,month,day;
                 for(int index=0; index<7; index++){
 
                     pvoutput[index] = records[6-index].split(",");
                     powerData.add(new BarEntry(Float.valueOf( pvoutput[index][1]),index));
-                    dateData.add(pvoutput[index][0]);
+
+                    year = Integer.parseInt(pvoutput[index][0].substring(0, 4));
+                    month = Integer.parseInt(pvoutput[index][0].substring(4, 6));
+                    day = Integer.parseInt(pvoutput[index][0].substring(6));
+
+                    Calendar cal = Calendar.getInstance();
+                    cal.set(year, month-1, day);
+
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MMM");
+                    String dateLabel = df.format(cal.getTime());
+
+                    dateData.add(dateLabel);
                 }
                 BarDataSet barDataSet = new BarDataSet(powerData,"Power Generated");
+                barDataSet.setColor(Color.argb(128,255,255,255));
 
                 BarData barData = new BarData(dateData, barDataSet);
 //                barData.setBarWidth(0.9f);
                 barChart.setData(barData);
+                barData.setValueTextColor(Color.WHITE);
+
 //                barChart.setFitBars(true);
+                XAxis xAxis = barChart.getXAxis();
+                barChart.getAxisLeft().setDrawGridLines(false);
+                barChart.getXAxis().setDrawGridLines(false);
+                barChart.getXAxis().setTextColor(Color.WHITE);
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                xAxis.setGridColor(Color.WHITE);
+                barChart.getAxisLeft().setGridColor(Color.WHITE);
+                barChart.setDescription("");
+                barChart.getLegend().setTextColor(Color.WHITE);
+                barChart.getAxisLeft().setTextColor(Color.WHITE);
+                barChart.getAxisRight().setEnabled(false);
                 barChart.setTouchEnabled(true);
                 barChart.setDragEnabled(true);
                 barChart.invalidate();

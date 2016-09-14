@@ -20,8 +20,19 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-    <com.github.mikephil.charting.charts.BarChart
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:id="@+id/dailyBarChart"></com.github.mikephil.charting.charts.BarChart>
+        android:layout_height="match_parent"
+        android:background="@drawable/calcbackground">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:id="@+id/dailyBarChart"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"></com.github.mikephil.charting.charts.BarChart>
+
+    </RelativeLayout>
+
 </android.support.design.widget.CoordinatorLayout>
