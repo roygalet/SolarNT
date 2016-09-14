@@ -9,7 +9,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+//import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class CompareActivity extends AppCompatActivity {
             dataset2.add(new Entry(Float.parseFloat(lineData2[index]),index));
             dataset3.add(new Entry(Float.parseFloat(lineData3[index]),index));
         }
-        List<ILineDataSet> lineDataSets = new ArrayList<> ();
+        List<LineDataSet> lineDataSets = new ArrayList<> ();
         LineDataSet lineDataSet1 = new LineDataSet(dataset1,"66 Benison Road");
         lineDataSet1.setColor(Color.RED);
         LineDataSet lineDataSet2 = new LineDataSet(dataset2,"Anula Heights");
@@ -52,7 +52,9 @@ public class CompareActivity extends AppCompatActivity {
         lineDataSets.add(lineDataSet2);
         lineDataSets.add(lineDataSet3);
 
-        lineChart.setData(new LineData(dateData, lineDataSets));
+        LineData lineData = new LineData(dateData, lineDataSets);
+
+        lineChart.setData(lineData);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

@@ -85,10 +85,16 @@
         <activity
             android:name=".DailyActivity"
             android:label="@string/title_activity_daily"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.roygalet.www.solarnt.YesActivity" />
+        </activity>
         <activity
             android:name=".CompareActivity"
             android:label="@string/title_activity_compare"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -24,11 +24,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/calcbackground">
-
         <com.github.mikephil.charting.charts.LineChart
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/compareLineChart"></com.github.mikephil.charting.charts.LineChart>
+            android:id="@+id/compareLineChart">
+
+        </com.github.mikephil.charting.charts.LineChart>
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
