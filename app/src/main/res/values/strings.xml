@@ -11,4 +11,5 @@
     <string name="title_activity_monitor">Monitor</string>
     <string name="title_activity_no">NoActivity</string>
     <string name="title_activity_calculator">Calculator</string>
+    <string name="title_activity_daily">DailyActivity</string>
 </resources>
