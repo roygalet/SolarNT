@@ -57,7 +57,7 @@ public class YesActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Uri uri = Uri.parse("http://138.80.64.225");
 //                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                Intent intent = new Intent(YesActivity.this, DailyActivity.class);
+                Intent intent = new Intent(YesActivity.this, CompareActivity.class);
                 startActivity(intent);
             }
         });

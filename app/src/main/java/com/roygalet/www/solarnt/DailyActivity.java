@@ -40,6 +40,8 @@ public class DailyActivity extends AppCompatActivity {
 
         dl.execute();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private class PVDataDownloader extends AsyncTask<String, Integer, String> {
@@ -129,7 +131,7 @@ public class DailyActivity extends AppCompatActivity {
                 barChart.setData(barData);
                 barData.setValueTextColor(Color.WHITE);
 
-//                barChart.setFitBars(true);
+//                lineChart.setFitBars(true);
                 XAxis xAxis = barChart.getXAxis();
                 barChart.getAxisLeft().setDrawGridLines(false);
                 barChart.getXAxis().setDrawGridLines(false);

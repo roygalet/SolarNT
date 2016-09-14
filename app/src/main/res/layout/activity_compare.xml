@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.roygalet.www.solarnt.DailyActivity">
+    tools:context="com.roygalet.www.solarnt.CompareActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -25,23 +25,10 @@
         android:layout_height="match_parent"
         android:background="@drawable/calcbackground">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Power Generated (Watt*hours)"
-            android:id="@+id/textView14"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="69dp"
-            android:textColor="#ffffff" />
-
-        <com.github.mikephil.charting.charts.BarChart
+        <com.github.mikephil.charting.charts.LineChart
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/dailyBarChart"
-            android:layout_below="@+id/textView14"></com.github.mikephil.charting.charts.BarChart>
-
+            android:id="@+id/compareLineChart"></com.github.mikephil.charting.charts.LineChart>
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

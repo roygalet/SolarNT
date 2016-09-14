@@ -12,4 +12,5 @@
     <string name="title_activity_no">NoActivity</string>
     <string name="title_activity_calculator">Calculator</string>
     <string name="title_activity_daily">DailyActivity</string>
+    <string name="title_activity_compare">CompareActivity</string>
 </resources>
