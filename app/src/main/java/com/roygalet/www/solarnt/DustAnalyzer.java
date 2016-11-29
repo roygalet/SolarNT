@@ -21,6 +21,8 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import Weather.WeatherData;
+
 public class DustAnalyzer extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
     private static final int SELECT_PICTURE = 100;

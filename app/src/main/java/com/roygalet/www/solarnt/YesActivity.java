@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import Weather.WeatherData;
+
 public class YesActivity extends AppCompatActivity {
 
     @Override
@@ -57,7 +59,7 @@ public class YesActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Uri uri = Uri.parse("http://138.80.64.225");
 //                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                Intent intent = new Intent(YesActivity.this, DailyActivity.class);
+                Intent intent = new Intent(YesActivity.this, Monitor.class);
                 startActivity(intent);
             }
         });

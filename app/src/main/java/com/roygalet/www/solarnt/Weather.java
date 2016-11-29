@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
+import Weather.*;
+
+import com.roygalet.www.solarnt.R;
 
 public class Weather extends AppCompatActivity {
 

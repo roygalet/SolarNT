@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 
+import Weather.WeatherData;
+
 public class Calculator extends AppCompatActivity {
 
     @Override
