@@ -1,0 +1,77 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+    <PreferenceCategory
+        android:title="Account Settings">
+    <EditTextPreference
+        android:defaultValue="47892"
+        android:key="sid"
+        android:title="System ID"
+        android:summary="Register your system to PVOutput.org to obtain a System ID."/>
+
+    <!-- This preference simply launches an intent when selected. Use this UI sparingly, per
+         design guidelines. -->
+    <EditTextPreference
+        android:defaultValue="4012c804abb523bf7466ef415c9ba808e8aae946"
+        android:key="key"
+        android:title="API Key"
+        android:summary="Your API key is used to update your data automatically, always keep your API key secret."/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Systems Search Settings">
+        <EditTextPreference
+            android:defaultValue="810"
+            android:key="postCode"
+            android:title="Post Code"
+            android:summary="Specify your system's post code."/>
+
+        <EditTextPreference
+            android:defaultValue="100"
+            android:key="distance"
+            android:title="Distance"
+            android:summary="Maximum distance of other systems from your post code."/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Chart Settings">
+
+        <EditTextPreference
+            android:title="Days in Daily Chart"
+            android:defaultValue="10"
+            android:summary="Maximum number of days to show on Daily Chart"
+            android:key="numberOfDays"/>
+
+        <EditTextPreference
+            android:title="Months in Monthly Chart"
+            android:defaultValue="12"
+            android:summary="Maximum number of months to show on Monthly Chart"
+            android:key="numberOfMonths"/>
+
+        <EditTextPreference
+            android:title="Years in Yearly Chart"
+            android:defaultValue="5"
+            android:summary="Maximum number of years to show on Yearly Chart"
+            android:key="numberOfYears"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Compare Settings">
+
+        <EditTextPreference
+            android:defaultValue="5"
+            android:key="numberOfSystems"
+            android:title="Number of Systems"
+            android:summary="Specify maximum number of systems to search."/>
+
+        <CheckBoxPreference
+            android:title="Show systems with recent Live Outputs Only."
+            android:key = "latestOnly"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>
