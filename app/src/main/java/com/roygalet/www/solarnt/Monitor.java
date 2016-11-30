@@ -129,7 +129,7 @@ public class Monitor extends AppCompatActivity {
     private void highLightButton(TextView button, boolean highlight){
         if(highlight){
             button.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-            button.setTextColor(Color.BLACK);
+            button.setTextColor(Color.WHITE);
         }else{
             button.setTypeface(Typeface.DEFAULT);
             button.setTextColor(Color.GRAY);

@@ -6,6 +6,10 @@
     android:textSize="20sp"
     android:gravity="left"
     android:textColor="#faabab"
+    android:shadowColor="#000000"
+    android:shadowRadius="3"
+    android:background="@android:color/transparent"
+    android:backgroundTint="#AA000000"
     android:padding="5dip"
     android:textStyle="bold"
     />
