@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/yesCardWeather"
                 android:elevation="16dp"
+                app:cardBackgroundColor="#A000"
                 android:layout_margin="20dp"
                 android:visibility="invisible">
                 <LinearLayout
@@ -244,6 +245,7 @@
                         android:textAlignment="gravity"
                         android:width="200dp"
                         android:gravity="center"
+                        android:textColor="#FFF"
                         android:textIsSelectable="false" />
 
                 </LinearLayout>
@@ -271,6 +273,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:id="@+id/yesCardMonitor"
+                app:cardBackgroundColor="#A000"
                 android:elevation="16dp">
                 <LinearLayout
                     android:orientation="vertical"
@@ -294,6 +297,7 @@
                         android:textSize="40sp"
                         android:textAlignment="gravity"
                         android:width="200dp"
+                        android:textColor="#FFF"
                         android:gravity="center"
                         android:textIsSelectable="false" />
 
@@ -309,6 +313,7 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                app:cardBackgroundColor="#A000"
                 android:id="@+id/yesCardDustAnalyzer"
                 android:layout_gravity="center"
                 android:elevation="16dp">
@@ -331,6 +336,7 @@
                         android:text="Dust Analyzer"
                         android:id="@+id/yesTextDustAnalyzer"
                         android:textSize="40sp"
+                        android:textColor="#FFF"
                         android:textAlignment="gravity"
                         android:width="200dp"
                         android:gravity="center" />
@@ -343,6 +349,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/yesCardCalculator"
             android:elevation="16dp"
+            app:cardBackgroundColor="#A000"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true">
             <LinearLayout
@@ -366,6 +373,7 @@
                     android:id="@+id/yesTextCalculator"
                     android:textSize="40sp"
                     android:textAlignment="gravity"
+                    android:textColor="#FFF"
                     android:width="200dp"
                     android:gravity="center"
                     android:textIsSelectable="false" />

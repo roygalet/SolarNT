@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -78,8 +79,7 @@ public class MainActivity extends AppCompatActivity {
             ((TextView)findViewById(R.id.mainTextTopDailySolarRadiation)).setText(String.valueOf(BigDecimal.valueOf(Double.valueOf(String.valueOf(weatherData.getSolarmean()))).setScale(2,BigDecimal.ROUND_HALF_UP).floatValue()));
             ((TextView)findViewById(R.id.mainTextBottomTemperature)).setText(String.valueOf(Math.round(weatherData.getTempminmean())).concat("-").concat(String.valueOf(Math.round(weatherData.getTempmaxmean()))));
 
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(autoText.getWindowToken(), 0);
+
 
             (findViewById(R.id.mainCardStats)).setVisibility(View.VISIBLE);
         }
@@ -116,7 +116,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
+
+
 
     private void loadSuburbs(){
         InputStreamReader is = null;
