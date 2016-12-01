@@ -157,7 +157,7 @@ public class PVSystemsCollection {
     private String generatedFooter(){
         return "]);\n"
                 + "			// Set chart options\n"
-                + "			var options = {chartArea:{left:40,top:20,width:'85%',height:'80%'}, backgroundColor: 'transparent' ,\n"
+                + "			var options = {chartArea:{left:50,top:20,width:'80%',height:'80%'}, backgroundColor: 'transparent' ,\n"
                 + "					colors: ['rgb(204, 255, 102)','rgb(51, 153, 51)'],\n"
                 + "				'i3D':true,\n"
                 + "				legend: { position: 'top', alignment: 'center' }\n"
@@ -281,8 +281,8 @@ public class PVSystemsCollection {
                 efficiency = ((PVSummarizedData) mySystem.getMonthlyData().get(year.concat(month))).getEfficiency();
             }
             String dateLabel = "";
-            if (i == 0) {
-                dateLabel = (new DateFormatSymbols()).getMonths()[Integer.parseInt(month)-1].substring(0, 3).concat(" ").concat(year.substring(2));
+            if (i == array.length-numberOfMonths) {
+                dateLabel = (new DateFormatSymbols()).getMonths()[Integer.parseInt(month)-1].substring(0, 3).concat(" ").concat(year);
             } else if (i == array.length - 1) {
                 dateLabel = "This Month";
             } else{
@@ -338,8 +338,8 @@ public class PVSystemsCollection {
         return html;
     }
 
-    public String compareDaily(String systemName, int numberOfDays) {
-        String html = "<html>\n"
+    private String generateHeader(String systemName){
+        return "<html>\n"
                 + "\n"
                 + "<head>\n"
                 + "	<!--Load the AJAX API-->\n"
@@ -358,11 +358,70 @@ public class PVSystemsCollection {
                 + "			// Create the data table.\n"
                 + "			var data = new google.visualization.DataTable();\n"
                 + "			data.addColumn('string', 'Date');\n"
-                + "			data.addColumn('number', 'My Power');\n"
-                + "			data.addColumn('number', 'My Efficiency');\n"
-                + "			data.addColumn('number', '" + systemName + " Power');\n"
-                + "			data.addColumn('number', '" + systemName + " Efficiency');\n"
+                + "			data.addColumn('number', 'My System');\n"
+                + "			data.addColumn('number', '');\n"
+                + "			data.addColumn('number', '" + systemName + "');\n"
+                + "			data.addColumn('number', '');\n"
                 + "			data.addRows([";
+    }
+
+    private String generateFooter(String systemName){
+        return  "]);\n"
+                + "			// Set chart options\n"
+                + "			var options = {chartArea:{left:50,top:20,width:'80%',height:'80%'},\n"
+                + "					colors: ['rgb(204, 255, 102)','rgb(51, 153, 51)','rgb(255, 142, 142)','rgb(153, 51, 51)'],\n"
+                + "				'i3D':true,\n"
+                + "				legend: { position: 'top', alignment: 'center' }\n"
+                + "				, vAxis: {\n"
+                + "					title: 'Power Generated kWh',\n"
+                + "					format: '0',\n"
+                + "					minValue:0\n"
+                + "				}\n"
+                + "				, hAxis: {\n"
+                + "					lineWidth: 4\n"
+                + "				}\n"
+                + "				, seriesType: 'bars'\n"
+                + "				, series: {\n"
+                + "					1: {\n"
+                + "						type: 'line',\n"
+                + "						curveType: 'function',\n"
+                + "						targetAxisIndex:1\n"
+                + "					}\n"
+                + "					,3: {\n"
+                + "						type: 'line',\n"
+                + "						curveType: 'function',\n"
+                + "						targetAxisIndex:1\n"
+                + "					}\n"
+                + "					, 'bar': {\n"
+                + "						'groupWidth': \"95%\"\n"
+                + "					}\n"
+                + "				},\n"
+                + "				vAxes: {\n"
+                + "				1: {\n"
+                + "				  title:'Efficiency kWh/kW',\n"
+                + "				  format: '0',\n"
+                + "					minValue:0\n"
+                + "				}\n"
+                + "			  }\n"
+                + "			};\n"
+                + "			// Instantiate and draw our chart, passing in some options.\n"
+                + "			var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));\n"
+                + "			chart.draw(data, options);\n"
+                + "					}\n"
+                + "	</script>\n"
+                + "</head>\n"
+                + "\n"
+                + "<body>\n"
+                + "	<!--Div that will hold the pie chart-->\n"
+                + "	<div id=\"chart_div\" style=\"width:100%; height:100%\"></div>\n"
+                + "</body>\n"
+                + "\n"
+                + "</html>";
+
+    }
+
+    public String compareDaily(String systemName, int numberOfDays) {
+        String html = generateHeader(systemName);
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         float myPower, myEfficiency, sysPower, sysEfficiency;
@@ -411,85 +470,12 @@ public class PVSystemsCollection {
         }
         html = html.concat(TextUtils.join(",", data));
 //          .concat("")
-        html = html.concat("]);\n"
-                + "			// Set chart options\n"
-                + "			var options = {\n"
-                + "					colors: ['rgb(204, 255, 102)','rgb(51, 153, 51)','rgb(255, 142, 142)','rgb(153, 51, 51)'],\n"
-                + "				'i3D':true,\n"
-                + "				legend: { position: 'top', alignment: 'center' }\n"
-                + "				, vAxis: {\n"
-                + "					title: 'Power Generated kWh',\n"
-                + "					format: '0',\n"
-                + "					minValue:0\n"
-                + "				}\n"
-                + "				, hAxis: {\n"
-                + "					lineWidth: 4\n"
-                + "				}\n"
-                + "				, seriesType: 'bars'\n"
-                + "				, series: {\n"
-                + "					1: {\n"
-                + "						type: 'line',\n"
-                + "						curveType: 'function',\n"
-                + "						targetAxisIndex:1\n"
-                + "					}\n"
-                + "					,3: {\n"
-                + "						type: 'line',\n"
-                + "						curveType: 'function',\n"
-                + "						targetAxisIndex:1\n"
-                + "					}\n"
-                + "					, 'bar': {\n"
-                + "						'groupWidth': \"95%\"\n"
-                + "					}\n"
-                + "				},\n"
-                + "				vAxes: {\n"
-                + "				1: {\n"
-                + "				  title:'Efficiency kWh/kW',\n"
-                + "				  format: '0',\n"
-                + "					minValue:0\n"
-                + "				}\n"
-                + "			  }\n"
-                + "			};\n"
-                + "			// Instantiate and draw our chart, passing in some options.\n"
-                + "			var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));\n"
-                + "			chart.draw(data, options);\n"
-                + "					}\n"
-                + "	</script>\n"
-                + "</head>\n"
-                + "\n"
-                + "<body>\n"
-                + "	<!--Div that will hold the pie chart-->\n"
-                + "	<div id=\"chart_div\" style=\"width:100%; height:100%\"></div>\n"
-                + "</body>\n"
-                + "\n"
-                + "</html>");
+        html = html.concat(generateFooter(systemName));
         return html;
     }
 
     public String compareMonthly(String systemName, int numberOfMonths) {
-        String html = "<html>\n"
-                + "\n"
-                + "<head>\n"
-                + "	<!--Load the AJAX API-->\n"
-                + "	<script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>\n"
-                + "	<script type=\"text/javascript\">\n"
-                + "		// Load the Visualization API and the corechart package.\n"
-                + "		google.charts.load('current', {\n"
-                + "			'packages': ['corechart']\n"
-                + "		});\n"
-                + "		// Set a callback to run when the Google Visualization API is loaded.\n"
-                + "		google.charts.setOnLoadCallback(drawChart);\n"
-                + "		// Callback that creates and populates a data table,\n"
-                + "		// instantiates the pie chart, passes in the data and\n"
-                + "		// draws it.\n"
-                + "		function drawChart() {\n"
-                + "			// Create the data table.\n"
-                + "			var data = new google.visualization.DataTable();\n"
-                + "			data.addColumn('string', 'Date');\n"
-                + "			data.addColumn('number', 'My Power');\n"
-                + "			data.addColumn('number', 'My Efficiency');\n"
-                + "			data.addColumn('number', '" + systemName + " Power');\n"
-                + "			data.addColumn('number', '" + systemName + " Efficiency');\n"
-                + "			data.addRows([";
+        String html = generateHeader(systemName);
         float myPower, myEfficiency,sysPower, sysEfficiency;
         String year, month;
         if (numberOfMonths > mySystem.getMonthlyData().size()) {
@@ -512,7 +498,7 @@ public class PVSystemsCollection {
 
         PVSystem otherSystem = (PVSystem) pvSystems.get(systemName);
 
-        for (int i = 0; i < numberOfMonths; i++) {
+        for (int i = array.length-numberOfMonths; i < array.length; i++) {
             year = array[i].substring(0, 4);
             month = array[i].substring(4);
             if (month.length() < 2) {
@@ -535,95 +521,24 @@ public class PVSystemsCollection {
             }
 
             String dateLabel = "";
-            if (i % 6 == 0) {
-                dateLabel = (new DateFormatSymbols()).getMonths()[Integer.parseInt(month)-1].substring(0, 3).concat(" ").concat(year.substring(2));
+            if (i == array.length-numberOfMonths) {
+                dateLabel = (new DateFormatSymbols()).getMonths()[Integer.parseInt(month)-1].substring(0, 3).concat(" ").concat(year);
             } else if (i == array.length - 1) {
                 dateLabel = "This Month";
+            } else{
+                dateLabel = (new DateFormatSymbols()).getMonths()[Integer.parseInt(month)-1].substring(0, 3);
             }
-            data[i] = "['".concat(dateLabel).concat("',").concat(String.valueOf(myPower)).concat(",").concat(String.valueOf(myEfficiency)).concat(",").concat(String.valueOf(sysPower)).concat(",").concat(String.valueOf(sysEfficiency)).concat("]");
+            data[i-array.length+numberOfMonths] = "['".concat(dateLabel).concat("',").concat(String.valueOf(myPower)).concat(",").concat(String.valueOf(myEfficiency)).concat(",").concat(String.valueOf(sysPower)).concat(",").concat(String.valueOf(sysEfficiency)).concat("]");
 
         }
         html = html.concat(TextUtils.join(",", data));
 //          .concat("")
-        html = html.concat("]);\n"
-                + "			// Set chart options\n"
-                + "			var options = {\n"
-                + "					colors: ['rgb(204, 255, 102)','rgb(51, 153, 51)','rgb(255, 142, 142)','rgb(153, 51, 51)'],\n"
-                + "				'i3D':true,\n"
-                + "				legend: { position: 'top', alignment: 'center' }\n"
-                + "				, vAxis: {\n"
-                + "					title: 'Power Generated kWh',\n"
-                + "					format: '0 ',\n"
-                + "					minValue:0\n"
-                + "				}\n"
-                + "				, hAxis: {\n"
-                + "					lineWidth: 4\n"
-                + "				}\n"
-                + "				, seriesType: 'bars'\n"
-                + "				, series: {\n"
-                + "					1: {\n"
-                + "						type: 'line',\n"
-                + "						curveType: 'function',\n"
-                + "						targetAxisIndex:1\n"
-                + "					}\n"
-                + "					,3: {\n"
-                + "						type: 'line',\n"
-                + "						curveType: 'function',\n"
-                + "						targetAxisIndex:1\n"
-                + "					}\n"
-                + "					, 'bar': {\n"
-                + "						'groupWidth': \"95%\"\n"
-                + "					}\n"
-                + "				},\n"
-                + "				vAxes: {\n"
-                + "				1: {\n"
-                + "				  title:'Efficiency kWh/kW',\n"
-                + "				  format: '0',\n"
-                + "					minValue:0\n"
-                + "				}\n"
-                + "			  }\n"
-                + "			};\n"
-                + "			// Instantiate and draw our chart, passing in some options.\n"
-                + "			var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));\n"
-                + "			chart.draw(data, options);\n"
-                + "					}\n"
-                + "	</script>\n"
-                + "</head>\n"
-                + "\n"
-                + "<body>\n"
-                + "	<!--Div that will hold the pie chart-->\n"
-                + "	<div id=\"chart_div\" style=\"width:100%; height:100%\"></div>\n"
-                + "</body>\n"
-                + "\n"
-                + "</html>");
+        html = html.concat(generateFooter(systemName));
         return html;
     }
 
     public String compareYearly(String systemName, int numberOfYears) {
-        String html = "<html>\n"
-                + "\n"
-                + "<head>\n"
-                + "	<!--Load the AJAX API-->\n"
-                + "	<script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>\n"
-                + "	<script type=\"text/javascript\">\n"
-                + "		// Load the Visualization API and the corechart package.\n"
-                + "		google.charts.load('current', {\n"
-                + "			'packages': ['corechart']\n"
-                + "		});\n"
-                + "		// Set a callback to run when the Google Visualization API is loaded.\n"
-                + "		google.charts.setOnLoadCallback(drawChart);\n"
-                + "		// Callback that creates and populates a data table,\n"
-                + "		// instantiates the pie chart, passes in the data and\n"
-                + "		// draws it.\n"
-                + "		function drawChart() {\n"
-                + "			// Create the data table.\n"
-                + "			var data = new google.visualization.DataTable();\n"
-                + "			data.addColumn('string', 'Date');\n"
-                + "			data.addColumn('number', 'My Power');\n"
-                + "			data.addColumn('number', 'My Efficiency');\n"
-                + "			data.addColumn('number', '" + systemName + " Power');\n"
-                + "			data.addColumn('number', '" + systemName + " Efficiency');\n"
-                + "			data.addRows([";
+        String html = generateHeader(systemName);
         float myPower, myEfficiency,sysPower, sysEfficiency;
         String year;
         if (numberOfYears > mySystem.getYearlyData().size()) {
@@ -671,57 +586,7 @@ public class PVSystemsCollection {
         }
         html = html.concat(TextUtils.join(",", data));
 //          .concat("")
-        html = html.concat("]);\n"
-                + "			// Set chart options\n"
-                + "			var options = {\n"
-                + "					colors: ['rgb(204, 255, 102)','rgb(51, 153, 51)','rgb(255, 142, 142)','rgb(153, 51, 51)'],\n"
-                + "				'i3D':true,\n"
-                + "				legend: { position: 'top', alignment: 'center' }\n"
-                + "				, vAxis: {\n"
-                + "					title: 'Power Generated kWh',\n"
-                + "					format: '0',\n"
-                + "					minValue:0\n"
-                + "				}\n"
-                + "				, hAxis: {\n"
-                + "					lineWidth: 4\n"
-                + "				}\n"
-                + "				, seriesType: 'bars'\n"
-                + "				, series: {\n"
-                + "					1: {\n"
-                + "						type: 'line',\n"
-                + "						curveType: 'function',\n"
-                + "						targetAxisIndex:1\n"
-                + "					}\n"
-                + "					,3: {\n"
-                + "						type: 'line',\n"
-                + "						curveType: 'function',\n"
-                + "						targetAxisIndex:1\n"
-                + "					}\n"
-                + "					, 'bar': {\n"
-                + "						'groupWidth': \"95%\"\n"
-                + "					}\n"
-                + "				},\n"
-                + "				vAxes: {\n"
-                + "				1: {\n"
-                + "				  title:'Efficiency kWh/kW',\n"
-                + "				  format: '0',\n"
-                + "					minValue:0\n"
-                + "				}\n"
-                + "			  }\n"
-                + "			};\n"
-                + "			// Instantiate and draw our chart, passing in some options.\n"
-                + "			var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));\n"
-                + "			chart.draw(data, options);\n"
-                + "					}\n"
-                + "	</script>\n"
-                + "</head>\n"
-                + "\n"
-                + "<body>\n"
-                + "	<!--Div that will hold the pie chart-->\n"
-                + "	<div id=\"chart_div\" style=\"width:100%; height:100%\"></div>\n"
-                + "</body>\n"
-                + "\n"
-                + "</html>");
+        html = html.concat(generateFooter(systemName));
         return html;
     }
 
