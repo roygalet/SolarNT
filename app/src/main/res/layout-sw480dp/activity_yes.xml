@@ -260,7 +260,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_above="@+id/yesCardCalculator"
+            android:layout_above="@+id/linearLayout18"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="48dp"
@@ -344,44 +344,99 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
-            android:layout_width="200dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/yesCardCalculator"
-            android:elevation="16dp"
-            app:cardBackgroundColor="#A000"
+            android:gravity="center_horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/yesCardCalculatorLinearLayout">
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/linearLayout18">
 
-                <ImageView
+            <android.support.v7.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/yesCardCalculator"
+                android:elevation="16dp"
+                android:layout_marginRight="20dp"
+                app:cardBackgroundColor="#A000"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:id="@+id/yesImgCalculator"
-                    android:src="@drawable/calc"
-                    android:layout_margin="8dp" />
+                    android:layout_height="match_parent"
+                    android:id="@+id/yesCardAILinearLayout">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Calculator"
-                    android:id="@+id/yesTextCalculator"
-                    android:textSize="40sp"
-                    android:textAlignment="gravity"
-                    android:textColor="#FFF"
-                    android:width="200dp"
-                    android:gravity="center"
-                    android:textIsSelectable="false" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:id="@+id/yesImgCalculator"
+                        android:src="@drawable/calc"
+                        android:layout_margin="8dp" />
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Calculator"
+                        android:id="@+id/yesTextAI"
+                        android:textSize="40sp"
+                        android:textAlignment="gravity"
+                        android:textColor="#FFF"
+                        android:width="200dp"
+                        android:gravity="center"
+                        android:textIsSelectable="false" />
+
+                </LinearLayout>
 
 
-        </android.support.v7.widget.CardView>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/yesCardAI"
+                android:elevation="16dp"
+                android:layout_marginLeft="20dp"
+                app:cardBackgroundColor="#A000"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/yesCardCalculatorLinearLayout">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:id="@+id/yesImgAI"
+                        android:src="@drawable/ai"
+                        android:layout_margin="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="AI"
+                        android:id="@+id/yesTextCalculator"
+                        android:textSize="40sp"
+                        android:textAlignment="gravity"
+                        android:textColor="#FFF"
+                        android:width="200dp"
+                        android:gravity="center"
+                        android:textIsSelectable="false" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
 
     </RelativeLayout>
 

@@ -180,6 +180,8 @@ public class Monitor extends AppCompatActivity {
             }
         }
 
+        System.out.println(nearbyCollection.generateMyMonthlyData(numberOfMonths));
+
         showOtherSystem(compareSystem.compareToIgnoreCase(dontCompareMessage)!=0);
 
         if(compareSystem.compareToIgnoreCase(dontCompareMessage)!=0){

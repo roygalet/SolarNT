@@ -20,6 +20,14 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo256xwide" />
 
+    <ImageView
+        android:layout_width="600dp"
+        android:layout_height="143dp"
+        app:srcCompat="@drawable/brand"
+        android:id="@+id/imageView4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"

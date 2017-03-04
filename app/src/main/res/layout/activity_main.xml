@@ -17,6 +17,14 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo256xwide" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="110sp"
+        app:srcCompat="@drawable/brand"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/imageView3" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
