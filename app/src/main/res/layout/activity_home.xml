@@ -27,7 +27,8 @@
             android:layout_height="511dp"
             android:layout_gravity="center_vertical|center_horizontal|center"
             android:orientation="vertical"
-            tools:ignore="UselessParent">
+            tools:ignore="UselessParent"
+            android:weightSum="1">
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -46,10 +47,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:layout_weight="0.78">
 
                 <Button
                     android:id="@+id/homeButtonSupport"
@@ -79,6 +81,55 @@
                     android:textAllCaps="false"
                     android:textColor="@android:color/holo_green_dark"
                     android:textSize="24sp"
+                    android:typeface="normal" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Do you have solar panels at home?"
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="126dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/homeButtonYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="84dp"
+                    android:layout_weight="0.09"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/icon_yes"
+                    android:padding="16dp"
+                    android:text="Yes"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:typeface="normal" />
+
+                <Button
+                    android:id="@+id/homeButtonNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="84dp"
+                    android:layout_weight="0.09"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/icon_no"
+                    android:padding="16dp"
+                    android:text="No"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
                     android:typeface="normal" />
             </LinearLayout>
 
@@ -115,6 +166,7 @@
             android:layout_width="292dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:padding="4dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/logo_cre" />
 
@@ -123,8 +175,10 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
+            android:padding="4dp"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/logo_cdu_foundation" />
+
     </LinearLayout>
 
 </FrameLayout>

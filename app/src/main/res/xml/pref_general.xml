@@ -3,9 +3,21 @@
 
         <SwitchPreference
             android:defaultValue="false"
-            android:title="Do you have solar panel at home?"
-            android:key="isSolarUser" />
+            android:key="isSolarUser"
+            android:title="Do you have solar panels at home?" />
     </PreferenceCategory>
+    <EditTextPreference
+        android:defaultValue="800"
+        android:key="generalPostCode"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Post Code" />
+    <EditTextPreference
+        android:defaultValue="Darwin"
+        android:key="generalSuburb"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Suburb" />
     <!--<SwitchPreference-->
         <!--android:defaultValue="true"-->
         <!--android:key="example_switch"-->
