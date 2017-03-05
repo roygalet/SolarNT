@@ -190,8 +190,8 @@ public class Settings extends AppCompatPreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("example_text"));
-            bindPreferenceSummaryToValue(findPreference("example_list"));
+//            bindPreferenceSummaryToValue(findPreference("example_text"));
+//            bindPreferenceSummaryToValue(findPreference("example_list"));
         }
 
         @Override
@@ -200,6 +200,8 @@ public class Settings extends AppCompatPreferenceActivity {
             if (id == android.R.id.home) {
                 startActivity(new Intent(getActivity(), Settings.class));
                 return true;
+            }else{
+                startActivity(new Intent(getActivity(), HomeActivity.class));
             }
             return super.onOptionsItemSelected(item);
         }
@@ -230,6 +232,8 @@ public class Settings extends AppCompatPreferenceActivity {
             if (id == android.R.id.home) {
                 startActivity(new Intent(getActivity(), Settings.class));
                 return true;
+            }else{
+                startActivity(new Intent(getActivity(), HomeActivity.class));
             }
             return super.onOptionsItemSelected(item);
         }
@@ -267,6 +271,8 @@ public class Settings extends AppCompatPreferenceActivity {
             if (id == android.R.id.home) {
                 startActivity(new Intent(getActivity(), Settings.class));
                 return true;
+            }else{
+                startActivity(new Intent(getActivity(), HomeActivity.class));
             }
             return super.onOptionsItemSelected(item);
         }
