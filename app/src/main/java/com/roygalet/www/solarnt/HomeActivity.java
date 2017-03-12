@@ -1,16 +1,14 @@
 package com.roygalet.www.solarnt;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Switch;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -43,15 +41,6 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ((ImageButton)findViewById(R.id.homeImageButtonCDUFoundation)).setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("http://www.cdu.edu.au/mace/foundation"));
-                startActivity(intent);
-            }
-        });
         ((ImageButton)findViewById(R.id.homeImageButtonHelp)).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent intent = new Intent(HomeActivity.this, HelpActivity.class);
@@ -66,10 +55,28 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        ((Button)findViewById(R.id.homeButtonSupport)).setOnClickListener(new View.OnClickListener() {
+        ((Button)findViewById(R.id.homeButtonApps)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, SupportActivity.class));
+                startActivity(new Intent(HomeActivity.this, AppsActivity.class));
+            }
+        });
+
+        ((Button)findViewById(R.id.homeButtonDonate)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, DonateActivity.class));
+            }
+        });
+
+        ((Switch)findViewById(R.id.homeSwitchHavePanels)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()) {
+                    ((Switch) findViewById(R.id.homeSwitchIsLogging)).setVisibility(View.VISIBLE);
+                }else{
+                    ((Switch) findViewById(R.id.homeSwitchIsLogging)).setVisibility(View.INVISIBLE);
+                }
             }
         });
     }
