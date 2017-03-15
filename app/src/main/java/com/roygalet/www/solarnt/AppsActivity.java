@@ -1,18 +1,13 @@
 package com.roygalet.www.solarnt;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -22,23 +17,31 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import PVOutputData.PVDailyData;
-import PVOutputData.PVSystemsCollection;
+import Weather.WeatherData;
+import Weather.WeatherList;
 
 public class AppsActivity extends AppCompatActivity {
+    private WeatherList weatherList;
+    private String[] suburbs;
+    JSONObject tempForecast = null;
+    JSONObject radiationForecast = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apps);
+
+        loadSuburbs();
+
+        try {
+            tempForecast = new JSONObject(responseTemp);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         ((ImageButton)findViewById(R.id.appsButtonHelp)).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -49,6 +52,58 @@ public class AppsActivity extends AppCompatActivity {
 
         new TemperatureReader().execute();
         new GeoLocator().execute();
+
+        ((CardView)findViewById(R.id.appsCardDustDetect)).setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(AppsActivity.this, DustDetect.class);
+                startActivity(intent);
+            }
+        });
+
+        ((CardView)findViewById(R.id.appsCardWeather)).setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(AppsActivity.this, WeatherActivity.class);
+                WeatherData weatherData = weatherList.getWeatherDataByDisplayName("0800 Darwin");
+                if(weatherData!=null){
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("weather", weatherData);
+                    bundle.putString("tempForecast", responseTemp);
+                    intent.putExtra("weather", bundle);
+                }
+                startActivity(intent);
+            }
+        });
+
+        ((CardView)findViewById(R.id.appsCardProjections)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AppsActivity.this, ProjectionsActivity.class);
+                WeatherData weatherData = weatherList.getWeatherDataByDisplayName("0800 Darwin");
+                if(weatherData!=null){
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("weather", weatherData);
+                    intent.putExtra("weather", bundle);
+                }
+                startActivity(intent);
+            }
+        });
+
+        ((CardView)findViewById(R.id.appsCardProviders)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AppsActivity.this, ProvidersActivity.class));
+            }
+        });
+
+        ((CardView)findViewById(R.id.appsCardOutputs)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Uri uri = Uri.parse("http://138.80.64.225");
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                Intent intent = new Intent(AppsActivity.this, Monitor.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class TemperatureReader extends AsyncTask<String, String, String> {
@@ -74,7 +129,7 @@ public class AppsActivity extends AppCompatActivity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line+"\n");
-                    System.out.println("Response: > " + line);   //here u ll get whole response...... :-)
+//                    System.out.println("Response: > " + line);   //here u ll get whole responseTemp...... :-)
 
                 }
 
@@ -105,9 +160,11 @@ public class AppsActivity extends AppCompatActivity {
             super.onPostExecute(aString);
             JSONObject mainObject = null;
             try {
+                responseTemp = aString;
                 mainObject = (new JSONObject(aString)).getJSONArray("hourly_forecast").getJSONObject(0);
                 ((ImageView)findViewById(R.id.appsImageWeather)).setImageResource(getResources().getIdentifier("@drawable/" + mainObject.getString("icon"), "id",getPackageName()));
                 ((TextView)findViewById(R.id.appsTextTemp)).setText(mainObject.getJSONObject("temp").getInt("english") + " F\n" + mainObject.getJSONObject("temp").getInt("metric") + " C");
+                tempForecast = mainObject;
                 ((TextView)findViewById(R.id.appsTextForeCast)).setText(mainObject.getString("wx"));
 //            } catch (IOException e) {
 //                e.printStackTrace();
@@ -121,6 +178,8 @@ public class AppsActivity extends AppCompatActivity {
 
 
     }
+
+
 
     private class GeoLocator extends AsyncTask<String, String, String> {
 
@@ -145,8 +204,6 @@ public class AppsActivity extends AppCompatActivity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line+"\n");
-                    System.out.println("Response: > " + line);   //here u ll get whole response...... :-)
-
                 }
 
                 return buffer.toString();
@@ -178,10 +235,6 @@ public class AppsActivity extends AppCompatActivity {
             try {
                 mainObject = (new JSONObject(aString)).getJSONObject("location");
                 ((TextView)findViewById(R.id.appsTextGeolocate)).setText(mainObject.getString("tz_long"));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -189,7 +242,9 @@ public class AppsActivity extends AppCompatActivity {
         }
     }
 
-    String location = "{\n" +
+
+
+    String responseLocation = "{\n" +
             "    \"response\": {\n" +
             "        \"version\": \"0.1\"\n" +
             "        , \"termsofService\": \"http://www.wunderground.com/weather/api/d/terms.html\"\n" +
@@ -219,7 +274,7 @@ public class AppsActivity extends AppCompatActivity {
             "    }\n" +
             "}";
 
-    String response="{\n" +
+    String responseTemp ="{\n" +
             "    \"response\": {\n" +
             "        \"version\": \"0.1\"\n" +
             "        , \"termsofService\": \"http://www.wunderground.com/weather/api/d/terms.html\"\n" +
@@ -310,4 +365,36 @@ public class AppsActivity extends AppCompatActivity {
             "        }\n" +
             "    ]\n" +
             "}";
+
+    String googleURL = "https://maps.googleapis.com/maps/api/geocode/json?latlng=-12.457200,130.836594&key=AIzaSyDE-clfKy0WQBj6V6BGMS3YTzi6vrHZiBQ";
+
+    private void loadSuburbs(){
+        InputStreamReader is = null;
+        try {
+            is = new InputStreamReader(getAssets().open("data.csv"));
+            BufferedReader reader = new BufferedReader(is);
+            weatherList = new WeatherList();
+            try {
+                reader.readLine();
+                String line;
+                try {
+                    while ((line = reader.readLine()) != null) {
+                        String[] data = line.split(",");
+                        weatherList.addWeatherData(Integer.parseInt(data[0]), "0".concat(data[1]), data[2], Float.parseFloat(data[3]), Float.parseFloat(data[4]), Integer.parseInt(data[5]), data[6], Float.parseFloat(data[7]), Float.parseFloat(data[8]), Float.parseFloat(data[9]), Float.parseFloat(data[10]), Integer.parseInt(data[11]), data[12], Float.parseFloat(data[13]), Float.parseFloat(data[14]), Float.parseFloat(data[15]), Float.parseFloat(data[16]), Integer.parseInt(data[17]), data[18], Float.parseFloat(data[19]), Float.parseFloat(data[20]), Float.parseFloat(data[21]), Float.parseFloat(data[22]), Float.parseFloat(data[23]), Float.parseFloat(data[24]), Float.parseFloat(data[25]));
+                    }
+                    suburbs = new String[weatherList.getCount()];
+                    for(int index = 0; index < suburbs.length; index++){
+                        suburbs[index] = weatherList.getWeatherDataByIndex(index).getPostcode().concat(" ").concat(weatherList.getWeatherDataByIndex(index).getSuburb());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

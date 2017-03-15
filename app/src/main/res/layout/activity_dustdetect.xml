@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_white"
+    tools:context="com.roygalet.www.solarnt.AppsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/dustRelativeLayout">
+
+        <Button
+            android:id="@+id/dustdetectButtonCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/icon_camera"
+            android:padding="16dp"
+            android:text="Camera"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <Button
+            android:id="@+id/dustdetectButtonGallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:drawableTop="@drawable/icon_gallery"
+            android:padding="16dp"
+            android:text="Gallery"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <TextView
+            android:id="@+id/dustTextNoImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/dustImgImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:background="@android:color/transparent"
+            android:text="@string/no_image_selected"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dustLinearLayout"
+            android:background="#b9000000"
+            android:padding="16dp"
+            android:layout_alignTop="@+id/dustImgImage"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView8"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:text="Analysis Complete"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/dustTextPercent"
+                android:textAlignment="center"
+                android:textSize="60sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:textColor="#ffffff"
+                android:layout_margin="2dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView9"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:text="Estimated surface area covered by dust"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/dustMessage"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:layout_below="@+id/dustTextNoImage"
+                android:layout_centerHorizontal="true"
+                android:text="A fraction of the Solar Exposure is being blocked by dust resulting to lower than usual power conversion efficiency of the solar PV system.  If this value is significantly high, cleaning may improve system efficiency."
+                android:textColor="#ffffff"
+                android:layout_margin="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="* Solar exposure data from Bureau of Meteorology\n** Based on data from Desert Knowledge Australia Solar Centre in Alice Springs NT\n*** Cost based on Jacana Energy $0.2595 per kWh domestic flat rate tariff"
+            android:id="@+id/dustTextCost"
+            android:textColor="#ffffff"
+            android:textAlignment="center"
+            android:textSize="10sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignBottom="@+id/dustImgImage"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            android:layout_margin="8dp"
+            android:background="#de271f1f" />
+
+    </RelativeLayout>
+
+</FrameLayout>

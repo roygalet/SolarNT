@@ -43,6 +43,15 @@
                 android:value="com.roygalet.www.solarnt.YesActivity" />
         </activity>
         <activity
+            android:name=".DustDetect"
+            android:label="@string/title_activity_dust_analyzer"
+            android:parentActivityName=".AppsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.roygalet.www.solarnt.AppsActivity" />
+        </activity>
+        <activity
             android:name=".Weather"
             android:label="@string/title_activity_weather"
             android:parentActivityName=".MainActivity"
@@ -70,6 +79,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.roygalet.www.solarnt.NoActivity" />
+        </activity>
+        <activity
+            android:name=".ProjectionsActivity"
+            android:label="Projected Savings"
+            android:parentActivityName=".AppsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.roygalet.www.solarnt.AppsActivity" />
         </activity>
         <activity
             android:name=".Monitor"
@@ -127,7 +145,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.roygalet.www.solarnt.HomeActivity" />
         </activity>
-        <activity android:name=".AppsActivity"></activity>
+        <activity android:name=".AppsActivity" />
+        <activity android:name=".WeatherActivity" />
+        <activity android:name=".ProvidersActivity"></activity>
     </application>
 
 </manifest>

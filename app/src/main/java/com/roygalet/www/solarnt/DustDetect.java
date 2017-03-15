@@ -14,6 +14,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,30 +25,30 @@ import java.math.BigDecimal;
 
 import Weather.WeatherData;
 
-public class DustAnalyzer extends AppCompatActivity {
+public class DustDetect extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
     private static final int SELECT_PICTURE = 100;
     Bitmap photo;
-    WeatherData weatherData;
+//    WeatherData weatherData;
     ContentValues values;
     Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dust_analyzer);
+//        setContentView(R.layout.activity_dust_analyzer);
         setContentView(R.layout.activity_dustdetect);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Bundle bundle = getIntent().getExtras();
-        weatherData = bundle.getBundle("weather").getParcelable("weather");
+//        Bundle bundle = getIntent().getExtras();
+//        weatherData = bundle.getBundle("weather").getParcelable("weather");
 
         ((LinearLayout)findViewById(R.id.dustLinearLayout)).setVisibility(View.INVISIBLE);
 
-        FloatingActionButton buttonCamera = (FloatingActionButton) findViewById(R.id.dustButtonCamera);
+        Button buttonCamera = (Button) findViewById(R.id.dustdetectButtonCamera);
         buttonCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +60,7 @@ public class DustAnalyzer extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton buttonGallery = (FloatingActionButton) findViewById(R.id.dustButtonGallery);
+        Button buttonGallery = (Button) findViewById(R.id.dustdetectButtonGallery);
         buttonGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,7 +170,7 @@ public class DustAnalyzer extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             ((LinearLayout)findViewById(R.id.dustLinearLayout)).setVisibility(View.INVISIBLE);
-            pd = new ProgressDialog(DustAnalyzer.this);
+            pd = new ProgressDialog(DustDetect.this);
             pd.setTitle("Processing Photo");
             pd.setMessage("Please wait.");
             pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -180,14 +182,14 @@ public class DustAnalyzer extends AppCompatActivity {
         @Override
         protected void onPostExecute(Double aDouble) {
             super.onPostExecute(aDouble);
-            double powerLoss = weatherData.getSolarmean() * 4.5 * 1.001635544 * aDouble/100;
+            double powerLoss = 5.841 * 4.5 * 1.001635544 * aDouble/100;
             double cost = powerLoss * 0.2595;
             if (pd!=null) {
                 pd.dismiss();
             }
             ((LinearLayout)findViewById(R.id.dustLinearLayout)).setVisibility(View.VISIBLE);
             ((TextView)findViewById(R.id.dustMessage)).setText("A fraction of the Solar Exposure is being blocked by dust resulting to lower than usual power conversion efficiency of the solar PV system."
-                    .concat("\n\nA 4.5 kW PV system in ").concat(weatherData.getSuburb()).concat("* could lose up to ")
+                    .concat("\n\nA 4.5 kW PV system in ").concat("Darwin ").concat("* could lose up to ")
                     .concat(String.valueOf(BigDecimal.valueOf(powerLoss).setScale(1, BigDecimal.ROUND_HALF_UP))
                             .concat(" kWh** amounting to $ ")
                             .concat(String.valueOf(BigDecimal.valueOf(cost).setScale(2, BigDecimal.ROUND_HALF_UP)))
